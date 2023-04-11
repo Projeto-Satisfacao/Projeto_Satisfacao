@@ -15,9 +15,9 @@ spl_autoload_register(function ($className) {
 
   // Substitui as barras invertidas por barras do sistema de arquivos
   $classFile = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
-  
+
   // Verifica se o arquivo da classe existe e o inclui
   if (file_exists($classFile)) {
-      require_once $classFile;
+    require_once $classFile;
   }
 });

@@ -6,7 +6,7 @@ namespace App\Model;
 * Classe responsável pelos dados dos usuários
 */
 
-require_once("./core/Database.php");
+require_once("../../core/Database.php");
 
 class UserModel {
 

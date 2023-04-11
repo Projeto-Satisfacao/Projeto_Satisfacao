@@ -16,12 +16,25 @@ class UserController {
   private $status;
 
   /**
+  * Envia os dados do formulário de criação ou edição de local para o controlador responsável
+  * @return array - Array com os dados do local submetidos no formulário
+  */
+  public function getLoginFormData($email, $password) {
+    // Código do método
+    if ((new \App\Controller\UserController())->login($email, $password)) {
+      // Usuário autenticado com sucesso, redirecionar para a página inicial
+      header('Location: ../../index.php');
+      exit;
+    }
+  }
+
+  /**
   * Verifica se o e-mail e a senha são válidos
   * @param string $email - E-mail
   * @param string $password - Senha
   * @return boolean - Verdadeiro se a autenticação for bem sucedida, falso caso contrário
   */
-  public function login($email, $password)
+  private function login($email, $password)
   {
     // Código do método
     // Verifica se o e-mail e a senha são válidos
@@ -262,4 +275,6 @@ class UserController {
     header("Location: /UserListView.php");
     exit;
   }
+
+  
 }

@@ -103,7 +103,7 @@ class SurveyController {
   public function delete($idSurvey) {
     // Código do método
     // Instancia um objeto da classe UserController e busca o usuário com o ID informado
-    $isAdmin = (new UserController())->isAdmin($idUser);
+    $isAdmin = (new \App\Controller\UserController())->isAdmin($idUser);
 
     try {
       // Verifica se o usuário é administrador, se não for, exibe uma mensagem de erro
