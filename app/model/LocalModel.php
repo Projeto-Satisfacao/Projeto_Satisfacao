@@ -8,6 +8,8 @@ namespace App\Model;
 
 require_once("./core/Database.php");
 
+use Exception;
+
 class LocalModel {
 
   private $idLocal;

@@ -6,6 +6,8 @@ namespace App\Controller;
  * Classe responsável pelo controle das avaliações
  */
 
+use Exception;
+
 class SurveyController {
 
   /**

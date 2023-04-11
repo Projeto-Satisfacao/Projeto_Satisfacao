@@ -6,6 +6,8 @@ namespace App\Controller;
  * Classe responsável pelo controle dos setores
  */
 
+use Exception;
+
 class DepartmentController {
 
   /**

@@ -8,6 +8,8 @@ namespace App\Model;
 
 require_once("./core/Database.php");
 
+use Exception;
+
 class SurveyModel extends DepartmentModel {
   
   private $idSurvey;
