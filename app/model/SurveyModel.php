@@ -239,7 +239,7 @@ class SurveyModel extends DepartmentModel {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
-    $getSurveyByDepartment = $conexao->prepare("SELECT * FROM survey WHERE department_iddepartment IN (SELECT iddepartment FROM department WHERE name LIKE ?)");
+    $getSurveyByDepartment = $conexao->prepare("SELECT * FROM survey WHERE department_iddepartment IN (SELECT iddepartment FROM department WHERE department LIKE ?)");
     $getSurveyByDepartment->bind_param("s", $department);
 
     // Executa a consulta SQL e retorna os resultados em um array associativo

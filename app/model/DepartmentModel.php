@@ -61,8 +61,8 @@ class DepartmentModel extends LocalModel {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
-    $updateDepartment = $conexao->prepare("UPDATE department SET name = ?, description = ? WHERE id = ?");
-    $updateDepartment->bind_param("ssi", $name, $description, $idDepartment);
+    $updateDepartment = $conexao->prepare("UPDATE department SET department = ?, description = ? WHERE iddepartment = ?");
+    $updateDepartment->bind_param("ssi", $department, $description, $idDepartment);
 
     // Executa o comando SQL e verifica se houve algum erro
     if ($updateDepartment->execute()) {
@@ -83,7 +83,7 @@ class DepartmentModel extends LocalModel {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
-    $deleteDepartment = $conexao->prepare("DELETE FROM department WHERE id = ?");
+    $deleteDepartment = $conexao->prepare("DELETE FROM department WHERE iddepartment = ?");
     $deleteDepartment->bind_param("i", $idDepartment);
 
     // Executa o comando SQL e verifica se houve algum erro
@@ -105,8 +105,8 @@ class DepartmentModel extends LocalModel {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
-    $getByName = $conexao->prepare("SELECT * FROM department WHERE name LIKE ?");
-    $getByName->bind_param("s", $name);
+    $getByName = $conexao->prepare("SELECT * FROM department WHERE department LIKE ?");
+    $getByName->bind_param("s", $department);
 
     // Executa a consulta SQL e retorna os resultados em um array associativo
     $getByName->execute();

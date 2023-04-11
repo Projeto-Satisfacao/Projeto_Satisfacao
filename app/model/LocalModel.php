@@ -52,8 +52,8 @@ class LocalModel {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
-    $updateLocal = $conexao->prepare("UPDATE local SET name = ?, address = ?, description = ? WHERE id = ?");
-    $updateLocal->bind_param("sssi", $name, $address, $description, $idLocal);
+    $updateLocal = $conexao->prepare("UPDATE local SET local = ?, address = ?, description = ? WHERE idlocal = ?");
+    $updateLocal->bind_param("sssi", $local, $address, $description, $idLocal);
 
     // Executa o comando SQL e verifica se houve algum erro
     if ($updateLocal->execute()) {
@@ -74,7 +74,7 @@ class LocalModel {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
-    $deleteLocal = $conexao->prepare("DELETE FROM local WHERE id = ?");
+    $deleteLocal = $conexao->prepare("DELETE FROM local WHERE idlocal = ?");
     $deleteLocal->bind_param("i", $idLocal);
 
     // Executa o comando SQL e verifica se houve algum erro
@@ -96,8 +96,8 @@ class LocalModel {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
-    $getByName = $conexao->prepare("SELECT * FROM local WHERE name LIKE ?");
-    $getByName->bind_param("s", $name);
+    $getByName = $conexao->prepare("SELECT * FROM local WHERE local LIKE ?");
+    $getByName->bind_param("s", $local);
 
     // Executa a consulta SQL e retorna os resultados em um array associativo
     $getByName->execute();
