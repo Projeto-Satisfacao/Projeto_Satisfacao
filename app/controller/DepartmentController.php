@@ -54,6 +54,12 @@ class DepartmentController {
       $createDepartment = (new \App\Model\DepartmentModel())->createDepartment($data['department'], $data['description']);
       // Criação do setor bem sucedida
       return true;
+
+      $department = $data['department'];
+
+      // Registra a LOG de criação do setor
+      $message = 'Cadastrou um novo setor \n [SETOR CADASTRADO]: {$department}';
+      \App\Core\Logger::logDepartment($message);
     } else {
       // Criação do setor falhou
       return false;
@@ -110,6 +116,12 @@ class DepartmentController {
       $editDepartment = (new \App\Model\DepartmentModel())->updateDepartment($idDepartment, $data['department'], $data['description']);
       // Atualização do setor bem sucedida
       return true;
+
+      $department = $data['department'];
+      
+      // Registra a LOG de atualização do setor
+      $message = 'Atualizou as informações de um setor \n [SETOR ATUALIZADO]: {$department}';
+      \App\Core\Logger::logDepartment($message);
     } else {
       // Atualização do setor falhou
       return false;
@@ -124,6 +136,10 @@ class DepartmentController {
     // Código do método
     // Instancia um objeto da classe DepartmentModel e remove o setor com o ID especificado
     $deleteDepartment = (new \App\Model\DepartmentModel())->deleteDepartment($idDepartment);
+
+    // Registra a LOG de exclusão do setor
+    $message = 'Deletou um local \n [ID DELETADO]: {$idDepartment}';
+    \App\Core\Logger::logDepartment($message);
 
     // Redireciona para a página de listagem de setores
     header("Location: /DepartmentListView.php");

@@ -115,7 +115,7 @@ class UserModel {
 
     // Prepara o comando SQL e vincula os parâmetros
     $byUsername = $conexao->prepare("SELECT * FROM user WHERE username LIKE ?");
-    $byUsername->bind_param("s", $username);
+    $byUsername->bind_param("s", "%$username%");
 
     // Executa a consulta SQL e retorna os resultados em um array associativo
     $byUsername->execute();

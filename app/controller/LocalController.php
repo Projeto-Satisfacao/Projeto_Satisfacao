@@ -57,6 +57,12 @@ class LocalController {
       $createLocal = (new \App\Model\LocalModel())->createLocal($data['local'], $data['address'], $data['url']);
       // Criação do local bem sucedida
       return true;
+
+      $local = $data['local'];
+
+      // Registra a LOG de criação do local
+      $message = 'Cadastrou um novo local \n [LOCAL CADASTRADO]: {$local}';
+      \App\Core\Logger::logLocal($message);
     } else {
       // Criação do local falhou
       return false;
@@ -116,6 +122,10 @@ class LocalController {
       $updateLocal = (new \App\Model\LocalModel())->updateLocal($idLocal, $data['local'], $data['address'], $data['url']);
       // Criação do local bem sucedida
       return true;
+
+      // Registra a LOG de atualização do local
+      $message = 'Atualizou as informações de um local \n [LOCAL ATUALIZADO]: {$local}';
+      \App\Core\Logger::logLocal($message);
     } else {
       // Criação do local falhou
       return false;
@@ -131,6 +141,10 @@ class LocalController {
     // Código do método
     // Instancia um objeto da classe LocalModel e remove o local com o ID especificado
     $deleteLocal = (new \App\Model\LocalModel())->deleteLocal($idLocal);
+
+    // Registra a LOG de exclusão do local
+    $message = 'Deletou um local \n [ID DELETADO]: {$idLocal}';
+    \App\Core\Logger::logUser($message);
 
     // Redireciona para a página de listagem de locais
     header("Location: /LocalListView.php");

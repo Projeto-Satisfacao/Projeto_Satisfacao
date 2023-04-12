@@ -55,6 +55,12 @@ class SurveyController {
       $createResult = (new \App\Model\SurveyModel())->createResult($data['idDepartment'], $data['score'], $data['reason'], $data['comment']);
       // Criação do local bem sucedida
       return true;
+
+      $department = $data['idDepartment'];
+
+      // Registra a LOG de criação da avaliação
+      $message = 'Cadastrou um novo setor \n [ID SETOR AVALIADO]: {$department}';
+      \App\Core\Logger::logSurvey($message);
     } else {
       // Criação do local falhou
       return false;
@@ -111,6 +117,10 @@ class SurveyController {
       if ($_SESSION['admin']) {
         // Instancia um objeto da classe SurveyModel e remove a avaliação com o ID especificado
         $deleteSurvey = (new \App\Model\SurveyModel())->deleteSurvey($idSurvey);
+
+        // Registra a LOG de exclusão de avaliação
+        $message = 'Deletou uma avaliação \n [ID DELETADO]: {$idSurvey}';
+        \App\Core\Logger::logSurvey($idSurvey);
 
         // Redireciona para a página de listagem de locais
         header("Location: /SurveyListView.php");

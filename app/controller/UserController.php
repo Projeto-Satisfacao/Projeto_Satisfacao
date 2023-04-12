@@ -189,6 +189,7 @@ class UserController {
     // Define as variáveis para validação
     $email = $data['email'];
     $password = $data['password'];
+    $username = $data['username'];
 
     // Instancia um objeto da classe UserModel e salva os dados do usuário no banco de dados
     if ($this->isValidEmail($email) && $this->isValidPassword($password)) {
@@ -197,7 +198,7 @@ class UserController {
       return ($newUser) ? true : false;
 
       // Registra a LOG de criação do usuário
-      $message = 'Cadastrou um novo usuário';
+      $message = 'Cadastrou um novo usuário \n [USUÁRIO CADASTRADO]: {$username}';
       \App\Core\Logger::logUser($message);
     } 
   }
@@ -268,6 +269,7 @@ class UserController {
     // Define as variáveis para validação
     $email = $data['email'];
     $password = $data['password'];
+    $username = $data['username'];
 
     // Instancia um objeto da classe UserModel e salva os dados do usuário no banco de dados
     if ($this->isValidEmail($email) && $this->isValidPassword($password)) {
@@ -276,7 +278,7 @@ class UserController {
       return ($editUser) ? true : false;
 
       // Registra a LOG de atualização do usuário
-      $message = 'Atualizou as informações do usuário ID {$idUser}';
+      $message = 'Atualizou as informações de um usuário \n [USUÁRIO ATUALIZADO]: {$username}';
       \App\Core\Logger::logUser($message);
     } 
   }
@@ -296,7 +298,7 @@ class UserController {
       return ($deleteUser) ? true : false;
 
       // Registra a LOG de exclusão do usuário
-      $message = 'Deletou o usuário ID {$idUser}';
+      $message = 'Deletou um usuário \n [ID DELETADO]: {$idUser}';
       \App\Core\Logger::logUser($message);
     } 
     // Redireciona para a página de listagem de usuários
