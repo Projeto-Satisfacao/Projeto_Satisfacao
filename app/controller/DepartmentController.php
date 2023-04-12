@@ -6,6 +6,8 @@ namespace App\Controller;
  * Classe responsável pelo controle dos setores
  */
 
+require_once("../../core/Log.php");
+
 use Exception;
 
 class DepartmentController {

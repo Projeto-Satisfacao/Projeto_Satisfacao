@@ -72,9 +72,9 @@ $resultado = ($updateUser) ? 'Atualização de usuário realizada.' : 'Atualiza�
 var_dump($resultado);
 
 /**
-*  Teste unitário para deleção de um usuário
+*  Teste unitário para exclusão de um usuário
 * @param int $id - ID do usuário a ser removido
-*  @return boolean - Verdadeiro se a deleção tiver sido realizada, falso caso a deleção tiver falhado
+*  @return boolean - Verdadeiro se a exclusão tiver sido realizada, falso caso a exclusão tiver falhado
 */
 
 // ID do usuário a ser removido

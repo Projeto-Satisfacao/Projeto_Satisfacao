@@ -6,6 +6,8 @@ namespace App\Controller;
  * Classe responsável pelo controle das avaliações
  */
 
+require_once("../../core/Log.php");
+
 use Exception;
 
 class SurveyController {
@@ -104,12 +106,9 @@ class SurveyController {
   */
   public function delete($idSurvey) {
     // Código do método
-    // Instancia um objeto da classe UserController e busca o usuário com o ID informado
-    $isAdmin = (new \App\Controller\UserController())->isAdmin($idUser);
-
     try {
       // Verifica se o usuário é administrador, se não for, exibe uma mensagem de erro
-      if ($isAdmin) {
+      if ($_SESSION['admin']) {
         // Instancia um objeto da classe SurveyModel e remove a avaliação com o ID especificado
         $deleteSurvey = (new \App\Model\SurveyModel())->deleteSurvey($idSurvey);
 

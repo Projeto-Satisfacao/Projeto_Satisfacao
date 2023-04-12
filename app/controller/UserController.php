@@ -6,6 +6,8 @@ namespace App\Controller;
  * Classe responsável pelo controle dos usuários
  */
 
+require_once("../../core/Log.php");
+
 use Exception;
 
 class UserController {
@@ -22,7 +24,13 @@ class UserController {
   public function getLoginFormData($email, $password) {
     // Código do método
     if ((new \App\Controller\UserController())->login($email, $password)) {
-      // Usuário autenticado com sucesso, redirecionar para a página inicial
+      // Usuário autenticado com sucesso
+
+      // Registra a LOG de entrada
+      $message = 'Realizou login no sistema';
+      \App\Core\Logger::logUser($message);
+
+      // Redirecionar para a página inicial
       header('Location: ../../index.php');
       exit;
     }
@@ -64,8 +72,15 @@ class UserController {
     // Verifica se a senha está correta
     if ($userData && $password == $userData[0]['password']) {
       // Autenticação bem sucedida
+      // Define o usuário da sessão
+      $_SESSION['usuario'] = $email;
+
+      // Define o usuário da sessão é administrador
+      $this->isAdmin($email);
+
       return true;
     } else {
+      // Autenticação falhou
       echo '[ATENÇÃO] A senha informada está incorreta.';
     }
   }
@@ -94,17 +109,18 @@ class UserController {
   
   /**
   * Verifica se o usuário tem permissão para modificar avaliações
-  * @param int $idUser - ID do usuário 
+  * @param int $email - E-mail
   * @return boolean - Verdadeiro se o usuário tiver permissão, falso caso contrário (false = usuário comum, true = administrador)
   */
-  private function isAdmin($idUser)
+  private function isAdmin($email)
   {
     // Código do método
     // Implementa o método getById() da Classe UserModel para obter os dados do usuário cadastrados no sistema
-    $userData = (new \App\Model\UserModel())->getById($idUser);
+    $userData = (new \App\Model\UserModel())->getByEmail($email);
 
     // Verifica se o usuário é um administrador
-    return $userData['status'] ? true : false;
+    $_SESSION['admin'] = $userData[0]['status'];
+    return $_SESSION['admin'];
   }
   
   /**
@@ -179,6 +195,10 @@ class UserController {
       $newUser = (new \App\Model\UserModel())->createUser($data['username'], $data['email'], md5($data['password']), $data['status']);
       // Criação do novo usuário bem sucedida
       return ($newUser) ? true : false;
+
+      // Registra a LOG de criação do usuário
+      $message = 'Cadastrou um novo usuário';
+      \App\Core\Logger::logUser($message);
     } 
   }
 
@@ -254,6 +274,10 @@ class UserController {
       $editUser = (new \App\Model\UserModel())->updateUser($idUser, $data['username'], $data['email'], $data['password'], $data['status']);
       // Atualização do usuário bem sucedida
       return ($editUser) ? true : false;
+
+      // Registra a LOG de atualização do usuário
+      $message = 'Atualizou as informações do usuário ID {$idUser}';
+      \App\Core\Logger::logUser($message);
     } 
   }
 
@@ -268,8 +292,12 @@ class UserController {
     $deleteUser = (new \App\Model\UserModel())->deleteUser($idUser);
 
     if ($deleteUser) {
-      // Deleção do usuário bem sucedida
+      // Exclusão do usuário bem sucedida
       return ($deleteUser) ? true : false;
+
+      // Registra a LOG de exclusão do usuário
+      $message = 'Deletou o usuário ID {$idUser}';
+      \App\Core\Logger::logUser($message);
     } 
     // Redireciona para a página de listagem de usuários
     header("Location: /UserListView.php");
