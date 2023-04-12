@@ -1,8 +1,9 @@
 <?php 
 require_once("ModelConexao.class.php");
+
 class ModelSurvey extends ModelDepartment
 { 
-
+    
     public function createSurveyResult($local,$department,$score,$reason,$comment) {
         if ( isset($local) and isset($department) and isset($score) and isset ($reason) and isset($comment))
         {   
@@ -46,6 +47,7 @@ class ModelSurvey extends ModelDepartment
         }
     }
     
+
     public function getSurveyByScore(int $score) {
 
         $sql = "SELECT * FROM survey WHERE score = $score";        

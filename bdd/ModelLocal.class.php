@@ -30,7 +30,7 @@ class ModelLocal
         $result->execute();
     }  
 
-    public function getByLocalname($namelocal) {
+    public function getByLocalname(string $namelocal) {
 
         $sql = "SELECT * FROM local WHERE local = $namelocal";
         try{
@@ -43,7 +43,7 @@ class ModelLocal
         }
     }
 
-    public function getByIdLocal($idlocal) {
+    public function getByIdLocal(int $idlocal) {
 
         $sql = "SELECT * FROM local WHERE idlocal = $idlocal";
         try{

@@ -2,6 +2,8 @@
 require_once("ModelLocal.class.php");
 require_once("ModelDepartment.class.php");
 require_once("ModelSurvey.class.php");
-$objsurvey = new ModelDepartment();
-$result = $objsurvey->getAllDepartment(1) ;
+require_once("ModelUser.class.php");
+
+$objsurvey = new ModelUser();
+$result = $objsurvey-> getAllUser() ;
 var_dump($result);

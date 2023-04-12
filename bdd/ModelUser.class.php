@@ -34,36 +34,39 @@ class ModelUser
         }
     }  
     
-    public function getByUsername($username) {
-
-        $byusername = $this->conexao->prepare("SELECT * FROM user WHERE username={}");
+    public function getByUsername(string $username) {
+        
+        $sql = "SELECT * FROM user WHERE username= '$username'";
         try{
-        $byusername->execute();
-        return $byusername;
+        $byusername = $this->conexao->query($sql);
+        $result = $byusername->fetch_assoc();
+        return $result;
         }
         catch (exeption $e) {
         return $e->getMessage();
         }
     }
 
-    public function getByIdUser($iduser) {
+    public function getByIdUser(int $iduser) {
 
-        $byiduser = $this->conexao->prepare("SELECT * FROM user WHERE iduser={}");
+        $sql = "SELECT * FROM user WHERE iduser=$iduser";
         try{
-        $byiduser->execute();
-        return $byiduser;
+        $byiduser = $this->conexao->query($sql);
+        $result = $byiduser->fetch_assoc();
+        return $result;
         }
         catch (exeption $e) {
         return $e->getMessage();
         }
     }
 
-    public function getByEmailUser($email) {
+    public function getByEmailUser(string $email) {
 
-        $byemail = $this->conexao->prepare("SELECT * FROM user WHERE email={}");
+        $sql = "SELECT * FROM user WHERE email='$email'";
         try{
-        $byemail->execute();
-        return $byemail;
+        $byemail = $this->conexao->query($sql);
+        $result = $byemail->fetch_assoc();
+        return $result;
         }
         catch(exeption $e){
         return $e->getMessage();
@@ -72,15 +75,16 @@ class ModelUser
 
     public function getAllUser()
     {
-        $alluser = $this->conexao->prepare("SELECT * FROM user");
-        try{
-        $alluser->execute();
-        return $alluser;
+        $sql = "SELECT * FROM user";
+        try{ 
+            $alluser = $this->conexao->query($sql);
+            $result = $alluser->fetch_assoc();
+            return $result;
         }
-        catch (exeption $e) {
-        return $e->getMessage();
+        catch(exeption $e){
+            return $e->getMessage();
         }
-    }
 }
     
 
+}

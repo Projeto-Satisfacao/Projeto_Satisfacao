@@ -19,7 +19,7 @@ class ModelDepartment
         }
     }
 
-    public function deleteDepartment($iddepartment) {
+    public function deleteDepartment(int $iddepartment) {
 
       $this->conexao->query("DELETE FROM department WHERE iddepartment = {$iddepartment}");
     }
@@ -32,7 +32,7 @@ class ModelDepartment
     }  
 
 
-    public function getBynameDepartment($namedepartment) {
+    public function getBynameDepartment(string $namedepartment) {
 
         $sql = "SELECT * FROM department WHERE department = '$namedepartment'";
         try{ 
