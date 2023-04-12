@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <title>SatisCultura</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="descricao">
+      <div class="container-fluid">
+        <img class="logosenai" src="assets/img/senai.jpg">
+        <h1 class="title">PESQUISA DE SATISFAÇÃO</h1>
+        <p class="paragrafo">Projeto com intuito de coletar informações
+          sobre a satisfação do público perante as
+          demandas prestadas pelo orgão.</p>
+      </div>
+    </div>
+    <div class="login">
+      <h1 class="bemvindo"> bem-vindo(a) </h1>
+      <p> Faça o login com o seu usuário e senha
+        para acessar a página.</p>
+      <form class="form" action="app/view/LoginFormView.php" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputUsuario1" class="form-label">Usuário</label>
+          <input type="text" class="form-control" id="exampleInputUsuario1" aria-describedby="usuarioHelp" name="email">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+          <div id="passwordHelp" class="form-text">Nunca compartilhe sua senha com ninguém.</div>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Me lembre</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+    </div>
+  </div>
+  <script src="assets/js/jquery-3.6.4.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

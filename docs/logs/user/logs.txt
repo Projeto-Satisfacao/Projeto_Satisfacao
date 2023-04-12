@@ -1,0 +1,12 @@
+[IP]: ::1 
+[USUÁRIO]: emanoel.silva@ba.estudante.senai.br 
+[DATA]: 12-04-2023 
+[HORA]: 01:20:37 
+[AÇÃO]: Realizou login no sistema
+
+[IP]: ::1 
+[USUÁRIO]: emanoel.silva@ba.estudante.senai.br 
+[DATA]: 12-04-2023 
+[HORA]: 01:33:45 
+[AÇÃO]: Realizou login no sistema
+

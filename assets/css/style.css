@@ -1,0 +1,50 @@
+.descricao {
+    width: 65%;
+    height: 100vh;
+    background: linear-gradient(359.35deg, #0F4FAF 13.74%, rgba(107, 135, 155, 0) 221.14%);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.login {
+    display: flex;
+    width: 35%;
+    height: 100vh;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding: 5rem;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 96px;
+    color: #FFFFFF;
+    text-align: center;
+}
+.bemvindo{
+    text-transform: uppercase;
+    color: #1384DC;
+}
+.footer{
+    color:#FFFFFF;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    left: 35%;
+}
+.paragrafo{
+    color: #ffffff;
+}
+.logosenai{
+    max-width: 100px;
+}
