@@ -1,0 +1,34 @@
+body {
+    background: -webkit-linear-gradient(left, #0b84c4, #1939b7);
+    background: -moz-linear-gradient(left, #0b84c4, #1939b7);
+    background: -ms-linear-gradient(left, #0b84c4, #1939b7);
+    background: -o-linear-gradient(left, #0b84c4, #1939b7);
+    background: linear-gradient(to right, #0b84c4, #1939b7);
+}
+.logo{
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 0;
+    margin-top: -20px;
+    color: #FFFFFF;
+}
+h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 96px;
+    color: #FFFFFF;
+    text-align: center;
+}
+h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 96px;
+    color: #FFFFFF;
+    text-align: center;
+}
