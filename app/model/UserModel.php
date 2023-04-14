@@ -5,8 +5,11 @@ namespace App\Model;
 /**
 * Classe responsável pelos dados dos usuários
 */
+//Produção
+//require_once("../../core/Database.php");
 
-require_once("../../core/Database.php");
+//Para teste do index.php
+require_once("core/Database.php");
 
 use Exception;
 
@@ -23,31 +26,42 @@ class UserModel {
   *  @param string $username - Nome de usuário
   *  @param string $email - Email
   *  @param string $password - Senha
-  *  @param int $status - Status de administrador (0 = usuário comum, 1 = administrador)
-  *  @return int - ID do usuário inserido
+  *  @param int $status - Status de administrador (0 = usuário comum, 1 = administrador)  
+  *  @todo text: Implementar traits para mapear as possibilidades de errors conforme estrutura de banco
   */
   public function createUser($username, $email, $password, $status) {
-    // Código do método
+    // Código do método   
     $conexao = \App\Model\Database::conectar();
-
-    // Prepara o comando SQL e vincula os parâmetros
-    $createUser = $conexao->prepare("INSERT INTO user (username, email, password, status) VALUES (?,?,?,?)");           
-    $createUser->bind_param("sssd", $username, $email, $password, $status);
-
-    try {
-      // Executa o comando SQL e retorna o ID do usuário inserido
-      return ($createUser->execute()) ? true : throw new Exception("Erro ao criar usuário: " . $conexao->errorInfo()[2]);
-    } catch (\mysqli_sql_exception $e) {
-      // Verifica se o erro é "Duplicate entry"
-      if ($e->getCode() == 1062) {
-        // Trata o erro (exibindo uma mensagem de erro para o usuário)
-        echo "[ATENÇÃO] O nome de usuário já está em uso. Por favor, escolha outro nome.";
-      } else {
-        // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
-        echo "[ATENÇÃO] Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente mais tarde.";
+        
+    if(get_class($conexao) == "mysqli"){
+      // Prepara o comando SQL e vincula os parâmetros
+      $createUser = $conexao->prepare("INSERT INTO user (username, email, password, status) VALUES (?,?,?,?)");           
+      $createUser->bind_param("sssd", $username, $email, $password, $status);
+      
+      try {
+        // Executa o comando SQL e retorna o ID do usuário inserido        
+        $createUser->execute();
+        // Capturar id cadastrado                
+        $result = mysqli_insert_id($conexao);        
+        return ($result);
+      } catch (\mysqli_sql_exception $e) {
+        // Verifica se o erro é "Duplicate entry"
+        return $e;
+        if ($e->getCode() == 1062) {
+          // Trata o erro (exibindo uma mensagem de erro para o usuário)
+          //exit(var_dump($e->getCode().": [ATENÇÃO] O nome de usuário já está em uso. Por favor, escolha outro nome."));          
+          return ($e->getCode());
+        } else {
+          // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
+          return ($e->getCode());
+        }              
       }
-      exit;
+    }else{     
+      //retorna a conexao como erro de conexao 
+      return $conexao;
     }
+
+    
   }
 
   /**
@@ -78,8 +92,7 @@ class UserModel {
       } else {
         // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
         echo "[ATENÇÃO] Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente mais tarde.";
-      }
-      exit;
+      }      
     }
   }
 
