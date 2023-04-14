@@ -6,7 +6,7 @@ namespace App\Controller;
  * Classe responsável pelo controle dos usuários
  */
 
-require_once("../../core/Log.php");
+//require_once("../../core/Log.php");
 
 use Exception;
 
@@ -193,9 +193,16 @@ class UserController {
 
     // Instancia um objeto da classe UserModel e salva os dados do usuário no banco de dados
     if ($this->isValidEmail($email) && $this->isValidPassword($password)) {
-      $newUser = (new \App\Model\UserModel())->createUser($data['username'], $data['email'], md5($data['password']), $data['status']);
-      // Criação do novo usuário bem sucedida
-      return ($newUser) ? true : false;
+      $newUser = (new \App\Model\UserModel())->createUser($data['username'], $data['email'], md5($data['password']), $data['status']);      
+      
+      // Criação do novo usuário bem sucedida      
+      if (is_integer($newUser)){      
+        return $newUser;
+      } elseif((get_class($newUser)== "mysqli_sql_exception") && ($newUser->getCode() == 1062)){
+        return("1062: [ATENÇÃO] O nome de usuário já está em uso. Por favor, escolha outro nome.");
+      }else{
+        return("[ATENÇÃO] Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente mais tarde.");
+      }
 
       // Registra a LOG de criação do usuário
       $message = 'Cadastrou um novo usuário \n [USUÁRIO CADASTRADO]: {$username}';

@@ -23,6 +23,9 @@ var_dump($login);
 $resultado = ($login) ? 'Login realizado.' : 'Não foi possível realizar o login.';
 var_dump($resultado);
 
+// --- Fim do Teste unitário para login --
+
+
 /**
 *  Teste unitário para criação de um usuário
 *  @param string $username - Nome de usuário
@@ -47,6 +50,8 @@ var_dump($createUser);
 // Retorno da criação
 $resultado = ($createUser) ? 'Criação de usuário realizada.' : 'Criação de usuário falhou.';
 var_dump($resultado);
+
+// --- Fim do Teste unitário para criação de um usuário --
 
 /**
 *  Teste unitário para atualização de um usuário existente

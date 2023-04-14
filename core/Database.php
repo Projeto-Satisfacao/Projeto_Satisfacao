@@ -6,6 +6,8 @@ namespace App\Model;
 * Classe responsável por fazer a conexão com o banco de dados
 */
 
+use Exception;
+
 class Database {
 
   protected static $conexao;
@@ -20,12 +22,11 @@ class Database {
     // Verifica se já existe uma conexão aberta com o banco de dados
     if (!isset(self::$conexao)) {
       // Cria uma nova conexão com o banco de dados MySQL
-      self::$conexao = new \mysqli("localhost", "root", "", "survey");
-
-      // Cria uma nova conexão com o banco de dados MySQL
-      if (self::$conexao->connect_error) {
-        // Em caso de erro, exibe uma mensagem de erro e encerra o script
-        die("Erro ao conectar com o banco de dados: " . self::$conexao->connect_error);
+      try {
+        self::$conexao = new \mysqli("localhost", "root", "", "survey");
+      } catch (Exception $e) {
+        //joga no logg o motivo
+        return $e;
       }
       // Define o charset da conexão para utf8
       self::$conexao->set_charset("utf8");
