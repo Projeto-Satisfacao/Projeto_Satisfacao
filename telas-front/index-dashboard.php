@@ -11,25 +11,25 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="assets/plugins/all.min.css">
+  <link rel="stylesheet" href="../assets/plugins/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="assets/plugins/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="../assets/plugins/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="assets/plugins/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/plugins/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="assets/plugins/jqvmap.min.css">
+  <link rel="stylesheet" href="../assets/plugins/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="assets/plugins/adminlte.min.css">
+  <link rel="stylesheet" href="../assets/plugins/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="assets/plugins/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../assets/plugins/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="assets/plugins/daterangepicker.css">
+  <link rel="stylesheet" href="../assets/plugins/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="assets/plugins/summernote-bs4.min.css">
+  <link rel="stylesheet" href="../assets/plugins/summernote-bs4.min.css">
   <!-- Arquivo css -->
-  <link rel="stylesheet" href="assets/plugins/style.css">
+  <link rel="stylesheet" href="../assets/plugins/style.css">
   <script src="https://kit.fontawesome.com/85b090ab76.js" crossorigin="anonymous"></script>
 </head>
 
@@ -56,7 +56,7 @@
       </a>
 
     <!-- SIDE-BAR -->
-    <?php include_once("assets/html/index-menu.html") ?>
+    <?php include_once("../assets/html/index-menu.html") ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
