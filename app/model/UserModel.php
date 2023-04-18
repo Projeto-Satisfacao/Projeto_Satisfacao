@@ -9,7 +9,7 @@ namespace App\Model;
 //require_once("../../core/Database.php");
 
 //Para teste do index.php
-require_once("core/Database.php");
+require_once("../core/Database.php");
 
 use Exception;
 
