@@ -1,0 +1,139 @@
+@charset "UTF-8";
+/*Folha de estilo dos formulários de cadastro*/
+
+.cad-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 35%;
+  top: -130%;
+  border-style: outset;
+  border-color: #479be0;
+  padding: 15px;
+}
+
+button {
+  cursor: pointer;
+}
+
+/*estilização dos inputs do formulário de cadastro*/
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid rgb(141, 140, 140);
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+/*estilização do botão da página principal de cadastro*/
+.button-modal {
+  background-color: #1070be;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  cursor: pointer;
+  width: auto;
+  border-style: outset;
+  border-color: #479be0;
+  border-radius: 15px;
+}
+
+.button-modal:hover {
+  cursor: pointer;
+  background-color: #0d5086;
+}
+
+
+/*estilo do título da página*/
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  color: #0d64ac;
+  
+}
+
+/*estilo do placeholder do input do formulário*/
+.placeholder {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 13px;
+  color: gray;
+}
+
+/*estilo do botão de cancelar*/
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #e81b10;
+  color: white;
+}
+
+/*estilo do botão de cadastrar*/
+.signupbtn {
+  padding: 14px 20px;
+  background-color: green;
+  color: white;
+}
+
+/*estilização dos botões flutuantes do formulário (ambos tem a mesma largura)*/
+.cancelbtn,
+.signupbtn {
+  float: left;
+  margin-left: 17%;
+  width: 25%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  border-radius: 20px;
+  border-color: white;
+}
+
+/*estilização do padding dos elementos de conteiner*/
+.container {
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+/*background do conteúdo da janela modal*/
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 18px;
+  right: 30px;
+  border: 2px solid #888;
+  width: 80%;
+  padding: 10px;
+}
+
+/*estilo do botão de fechar a janela modal*/
+.close {
+  position: absolute;
+  right: 110px;
+  top: -12px;
+  color: rgb(255, 251, 251);
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/*configuração dos efeitos close hover e close focus dos elementos*/
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+
+
+/*configuração da media query da página*/
+@media screen and (max-width: 300px) {
+  .cancelbtn,
+  .signupbtn {
+    width: 100%;
+  }
+}
+

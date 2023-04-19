@@ -19,32 +19,28 @@
 		}
 
 		.cad-container {
-			margin-top: 50%;
+			margin-top: 78%;
 		}
 
 		.button-modal {
-			width: 280px;
-			height: 10vh;
-			font-size: 20px;
-			padding-top: 20px;
-			text-align: center;
-			border-width: medium;
-			border-style: outset;
-			border-color: blue;
+			width: 300px;
+			height: 7vh;
+			font-size: 23px;
 		}
 
 		h2 {
 			text-align: center;
-			border-width: medium;
-			border-style: outset;
-			border-color: blue;
+		}
+
+		label {
+			font-weight: bold;
 		}
 
 	</style>
 </head>
 
 <body>
-	<?php include_once("../assets/html/index-menu.html") ?>
+	<?php include_once("index-menu.html") ?>
 	<div class="cad-container">
 		<h2>Cadastros</h2>
 

@@ -1,0 +1,189 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../assets/plugins/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet" href="../assets/plugins/tempusdominus-bootstrap-4.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="../assets/plugins/icheck-bootstrap.min.css">
+<!-- JQVMap -->
+<link rel="stylesheet" href="../assets/plugins/jqvmap.min.css">
+<!-- Theme style -->
+
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="../assets/plugins/OverlayScrollbars.min.css">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="../assets/plugins/daterangepicker.css">
+<!-- summernote -->
+<link rel="stylesheet" href="../assets/plugins/summernote-bs4.min.css">
+<!-- Arquivo css -->
+<link rel="stylesheet" href="../assets/plugins/style.css">
+
+<style>
+	body {
+		height: 100%;
+	}
+
+	.main-sidebar {
+		background-color: #0077c2;
+		color: #fff;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 280px;
+		height: 100%;
+		padding: 20px;
+	}
+
+	.main-sidebar,
+	label {
+		text-align: center;
+	}
+
+	.main-sidebar ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+
+	.main-sidebar li {
+		margin-bottom: 10px;
+	}
+
+	.main-sidebar a {
+		color: #fff;
+		display: block;
+		padding: 10px;
+		text-decoration: none;
+	}
+
+	.main-sidebar a:hover {
+		background-color: #005ca9;
+		font-size: 17px;
+	}
+
+
+	.logo {
+		text-align: center;
+		margin-bottom: 20px;
+
+	}
+
+	.logo img {
+		width: 100px;
+	}
+
+
+	.buttons {
+		margin-top: 50px;
+	}
+
+	.hr-bar {
+		background-color: #fff;
+		height: 2px;
+		width: 100%;
+		margin-top: 11px;
+		margin-bottom: 11px;
+	}
+
+	/*"RESPONSIVIDADE DA BARRA LATERAL"*/
+	@media screen and (max-width: 1475px) {
+		.main-sidebar {
+			width: 170px;
+			font-size: 15px;
+		}
+
+		.imagem-logo {
+			width: 120px;
+		}
+	}
+
+	@media screen and (max-width: 1120px) {
+		.main-sidebar {
+			width: 130px;
+			font-size: 15px;
+		}
+
+		.imagem-logo {
+			width: 100px;
+		}
+	}
+
+	/*/."RESPONSIVIDADE DA BARRA LATERAL"*/
+
+	section.content {
+		float: right;
+		width: 80%;
+		margin-right: 5vh;
+		margin-top: 2vh;
+		min-width: 400px;
+	}
+
+	.corpo-sidebar {
+		background-color: #0077c2;
+		width: 2px;
+		height: 100vh;
+		left: 0;
+	}
+
+	.dropdown-menu {
+		display: none;
+		position: absolute;
+		background-color: #005ca9;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+		width: 100%;
+	}
+
+	.dropdown-menu a {
+		color: #fff;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.dropdown-menu a:hover {
+		background-color: #003b6b67;
+	}
+
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
+
+	.dropdown:hover .dropdown-toggle {
+		background-color: #005ca9;
+	}
+</style>
+
+<script src="https://kit.fontawesome.com/85b090ab76.js" crossorigin="anonymous"></script>
+<!-- Sidebar -->
+<div class="main-sidebar">
+	<div class="logo">
+		<img class="" src="../assets/img/senai.jpg" alt="Pesquisa de satisfação">
+
+	</div>
+	<label>Pesquisa de satisfação</label>
+	<div class="buttons">
+		<ul>
+			<li><a href="./index-dashboard.php"><i class="fas fa-home"></i> Home</a></li>
+			<div class="hr-bar"></div>
+			<li><a href="./index-cadastros.php"><i class="fas fa-edit"></i> Cadastros</a></li>
+			<div class="hr-bar"></div>
+			<li><a href="./index-login.html"><i class="fas fa-user"></i> Log-off</a></li>
+			<div class="hr-bar"></div>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle"><i class="fas fa-list-ul"></i> Listagem</a>
+				<div class="dropdown-menu">
+					<a href="./index-list-survery-usuarios.php"><i class="fa-solid fa-square-poll-vertical"></i> Survey & Usuários</a>
+					<a href="./index-list-setores-locais.php"><i class="fa-solid fa-map"></i> Setores & Locais</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- /.sidebar -->
+</aside>
