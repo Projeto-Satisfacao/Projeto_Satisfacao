@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Model;
+namespace App\model;
 
 /**
-* Classe responsável pelos dados dos usuários
-*/
+ * Classe responsável pelos dados dos usuários
+ */
 //Produção
-//require_once("../../core/Database.php");
 
 //Para teste do index.php
-require_once("../core/Database.php");
+require_once("core/Database.php");
 
 use Exception;
 
@@ -32,7 +31,7 @@ class UserModel {
   public function createUser($username, $email, $password, $status) {
     // Código do método   
     $conexao = \App\Model\Database::conectar();
-        
+   
     if(get_class($conexao) == "mysqli"){
       // Prepara o comando SQL e vincula os parâmetros
       $createUser = $conexao->prepare("INSERT INTO user (username, email, password, status) VALUES (?,?,?,?)");           

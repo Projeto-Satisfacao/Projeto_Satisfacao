@@ -50,10 +50,10 @@
 		<button class="button-modal" id="setUsuario">Cadastrar Usuário</button>
 		<section class="modal-bg">
 			<dialog id="id01" class="modal">
-				<span class="close" title="Close Modal">×</span>
-				<form class="modal-content animate" action="/action_page.php">
-					<div class="container">
-					</div>
+					<span class="close" title="Close Modal">×</span>
+					<form class="modal-content animate" method="POST" action="../index.php/cadastro">
+						<div class="container">
+						</div>
 					<div class="clearfix">
 						<button type="button" class="cancelbtn">Cancelar</button>
 						<button type="submit" class="signupbtn">Cadastrar</button>

@@ -1,10 +1,11 @@
 <?php
 
+namespace App\view;
 /**
  * Classe responsável pelos dados do formulário de criação ou edição de um usuário e seus detalhes
  */
-require_once("../autoload.php");
 
+use Exception;
 class UserFormView {
 
   /**
@@ -45,6 +46,10 @@ class UserFormView {
     </form>';
   }
 
+  public function registerUser() {
+
+  }
+
   /**
   * Envia os dados do formulário de criação ou edição para o controlador
   * @param array $userData - Dados do usuário informados no formulário
@@ -68,7 +73,7 @@ class UserFormView {
   * Requisitos:
   * Este método requer que o formulário correspondente esteja disponível na página HTML definida pelo método displayUserForm(). Além disso, ele deve validar os dados inseridos pelo usuário antes de enviá-los ao controller.
   */
-  public function getUserFormData($userData) {
+  public static function getUserFormData($userData) {
     // Código do método
     /**
      * Esse método é o responsável por receber os dados do formulário preenchido e encaminhar para o controller.
@@ -79,25 +84,8 @@ class UserFormView {
      * - Sanitizar os dados antes de chamar o controller.
      * O método do controller que recebe esses dados é o store($userData) em caso de criação e update($userData) no caso de edição.
      */
-    try
-    {
-      // Verifica se todos os campos obrigatórios foram preenchidos
-      if (empty($userData['username']) || empty($userData['email']) || empty($userData['password']) || empty($userData['status'])) {
-        throw new Exception('Por favor, preencha todos os campos obrigatórios.');
-      }
-      
-      else 
-      {
-        $userModel = ((new \App\Model\UserModel())->createUser($userData['username'], $userData['email'], 
-                                                               $userData['password'], $userData['status']));
-      }
 
-    }
-    
-    catch (Exception $e)
-    {
-        // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
-    }
+ 
+
   }
 }

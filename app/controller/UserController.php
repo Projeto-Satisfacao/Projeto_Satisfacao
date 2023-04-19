@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Controller;
+namespace App\controller;
 
 /**
  * Classe responsável pelo controle dos usuários
@@ -34,6 +33,24 @@ class UserController {
       header('Location: ../../index.php');
       exit;
     }
+  }
+
+  public function createUser($userData) {
+    var_dump('dada');
+    $username = $userData->username;
+    $email = $userData->email;
+    $password = $userData->password;
+    try {
+      if (!$this->isValidEmail($email) || !$this->isValidPassword($password)) {
+        throw new Exception('Por favor, preencha corretamente os campos.');
+      } else {
+        $userModel = ((new \App\model\UserModel())->createUser($username, $email, $password, 1));  
+        header('Location: ../telas-front/index-dashboard.php');
+      }
+    } catch (\Throwable $th) {
+      echo $th;
+    } 
+   
   }
 
   /**
