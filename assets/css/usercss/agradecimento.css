@@ -1,0 +1,45 @@
+body {
+    background: linear-gradient(to right, #0b84c4, #1939b7);
+    background-color: #1939b7;
+}
+section{
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+}
+.section-logo, .section-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-logo, .img-end{
+    width: 15%;
+    margin: 0 auto;
+}
+.container-fluid{
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    width: 90%;
+    max-width: 90%;
+}
+.title{
+    font-family: 'Poppins';
+    color: white;
+    font-size: 2.5rem;
+}
+.thanks{
+    font-family: 'Poppins';
+    color: white;
+    font-size: 5rem;
+    margin-top: 8.5rem;
+}
+.section-text{
+    text-align: center;
+}
+.thanks-second{
+    margin-top: -3.5rem;
+    font-family: 'Poppins';
+    color: white;
+}

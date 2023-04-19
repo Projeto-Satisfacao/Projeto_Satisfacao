@@ -17,12 +17,20 @@
   <link rel="stylesheet" href="../assets/css/tablecss/adminlte.min.css">
   <!--ICONES-->
   <script src="https://kit.fontawesome.com/85b090ab76.js" crossorigin="anonymous"></script>
+  <style>
+    h2 {
+      margin-left: 30px;
+    }
+    .container-fluid {
+      margin-left: 23px;
+    }
+  </style>
 </head>
 
 <body style="height: fit-content;" class="hold-transition">
 
 <!-- SIDE-BAR -->
-<?php include_once("../assets/html/index-menu.html") ?>
+<?php include_once("index-menu.html") ?>
   
 
     <!-- TODO O CONTEÚDO ESTÁ AQUI DENTRO DE SECTION content -->

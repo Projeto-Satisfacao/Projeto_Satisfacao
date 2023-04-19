@@ -56,7 +56,7 @@
       </a>
 
     <!-- SIDE-BAR -->
-    <?php include_once("../assets/html/index-menu.html") ?>
+    <?php include_once("index-menu.html") ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->

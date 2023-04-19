@@ -10,8 +10,8 @@ session_start();
 if(isset($_POST['email']) && isset($_POST['password'])) {
   // Informações de login do usuário
   $email = $_POST['email'];
-  $password = md5($_POST['password']);
+  $md5password = md5($_POST['password']);
 
   // Instancia um objeto da classe UserController e envia os dados de login do usuário para o controller realizar as validações
-  $userController = ((new \App\Controller\UserController())->getLoginFormData($email, $password));
+  $userController = ((new \App\Controller\UserController())->getLoginFormData($email, $md5password));
 }

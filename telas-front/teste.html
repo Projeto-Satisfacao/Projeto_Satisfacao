@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://kit.fontawesome.com/85b090ab76.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,700">
+	<style>
+		body {
+			font-family: 'Poppins', sans-serif;
+			font-size: 16px;
+		}
+
+		.main-sidebar {
+			background-color: #0077c2;
+			/* cor de fundo azul */
+			color: #fff;
+			/* cor do texto branco */
+			position: fixed;
+			/* posição fixa */
+			top: 0;
+			/* posição no topo */
+			left: 0;
+			/* posição à esquerda */
+			width: 200px;
+			/* largura da barra lateral */
+			height: 100%;
+			/* altura igual à do conteúdo */
+			padding: 20px;
+			/* espaçamento interno */
+		}
+
+		.main-sidebar ul {
+			list-style: none;
+			/* remover marcadores de lista */
+			margin: 0;
+			padding: 0;
+		}
+
+		.main-sidebar li {
+			margin-bottom: 10px;
+			/* espaçamento entre os itens */
+		}
+
+		.main-sidebar a {
+			color: #fff;
+			/* cor do texto branco */
+			display: block;
+			/* tornar o link em bloco */
+			padding: 10px;
+			/* espaçamento interno */
+			text-decoration: none;
+			/* remover sublinhado */
+		}
+
+		.main-sidebar a:hover {
+			background-color: #005ca9;
+			/* cor de fundo azul mais escura quando o mouse passa sobre o botão */
+			padding: 10px;
+			font-size: 17px;
+		}
+
+		.logo {
+			text-align: center;
+			/* centralizar o conteúdo */
+			margin-bottom: 20px;
+			/* espaçamento abaixo da logo */
+		}
+
+		.buttons {
+			margin-top: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main-sidebar">
+		<div class="logo">
+			<img class="brand-image img-circle elevation-3" src="../assets/img/senai.jpg" alt="Pesquisa de satisfação">
+			<label class="brand-text font-weight-light">Pesquisa de satisfação</label>
+		</div>
+		<div class="buttons">
+			<ul>
+				<li class="user-panel mt-3 pb-3 mb-3 d-flex"><a class="d-block" href="#"><i class="fas fa-home"></i> Home</a></li>
+				<hr>
+				<li class="user-panel mt-3 pb-3 mb-3 d-flex"><a class="d-block" href="#"><i class="fas fa-edit"></i> Cadastros</a></li>
+				<hr>
+				<li class="user-panel mt-3 pb-3 mb-3 d-flex"><a class="d-block" href="#"><i class="fas fa-user"></i> Login</a></li>
+				<hr>
+				<li class="user-panel mt-3 pb-3 mb-3 d-flex"><a class="d-block" href="#"><i class="fas fa-list-ul"></i> Listagem</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+body{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #0b84c4, #1939b7);
+    background-color: #1939b7;
+}
+.container-fluid{
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    width: 90%;
+    max-width: 90%;
+    padding-top: 1rem;
+}
+
+section{
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+}
+img{
+    max-width: 100%;
+    width: 4rem;
+}
+.img-logo{
+    width: 15%;
+    margin: 0 auto;
+}
+.section-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    font-family: 'Poppins';
+    color: white;
+    font-size: 3rem;
+    margin-top: 5rem;
+}
+.paragraph{
+    margin-top: 2rem;
+    color: white;
+    opacity: 80%;
+}
+.section-text{
+    text-align: center;
+}
+.section-button{
+    text-align: center;
+    margin-top: 0.6rem;
+    justify-content: space-between;
+}
+a{
+    position: relative;
+    background-color: #1939b7; 
+    color: white;
+    opacity: 90%;
+    text-align: center;
+    width: 3rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    border: none;
+    margin: 0.5rem;
+    display: block;
+}
+label{
+    position: relative;
+    display: inline-block;
+    color: white;
+}
+.pessimo{
+    background-color: #fb2233;
+}
+.ruim{
+    background-color: #ff740d;
+}
+.regular{
+    background-color: #e0bf1a;
+}
+.bom{
+    background-color: #a1d229;
+}
+.excelente{
+    background-color: #23b840;
+}
+.question{
+    font-family: 'Poppins';
+    color: white;
+}
