@@ -10,6 +10,7 @@ export default function CreateFormElements({ inputs }) {
     inputEl.type = type;
     inputEl.placeholder = placeholder;
     inputEl.id = id;
+    inputEl.name = id;
     inputEl.required = true;
 
     container.appendChild(labelEl);
