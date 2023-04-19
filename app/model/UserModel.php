@@ -45,6 +45,7 @@ class UserModel {
         $result = mysqli_insert_id($conexao);        
         return ($result);
       } catch (\mysqli_sql_exception $e) {
+        
         // Verifica se o erro é "Duplicate entry"
         return $e;
         if ($e->getCode() == 1062) {
@@ -76,23 +77,32 @@ class UserModel {
     // Código do método
     $conexao = \App\Model\Database::conectar();
 
+    if(get_class($conexao) == "mysqli"){
     // Prepara o comando SQL e vincula os parâmetros
-    $updateUser = $conexao->prepare("UPDATE user SET username = ?, email = ?, password = ?, status = ? WHERE iduser = ?");
-    $updateUser->bind_param("sssdi", $username, $email, $password, $status, $idUser);
+      $updateUser = $conexao->prepare("UPDATE user SET username = ?, email = ?, password = ?, status = ? WHERE iduser = ?");
+      $updateUser->bind_param("sssdi", $username, $email, $password, $status, $idUser);
 
-    // Executa o comando SQL e verifica se houve algum erro
-    try {
-      // Executa o comando SQL e retorna o ID do usuário inserido
-      return ($updateUser->execute()) ? true : throw new Exception("Erro ao atualizar usuário: " . $conexao->errorInfo()[2]);
-    } catch (\mysqli_sql_exception $e) {
-      // Verifica se o erro é "Duplicate entry"
-      if ($e->getCode() == 1062) {
-        // Trata o erro (exibindo uma mensagem de erro para o usuário)
-        echo "[ATENÇÃO] O nome de usuário já está em uso. Por favor, escolha outro nome.";
-      } else {
-        // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
-        echo "[ATENÇÃO] Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente mais tarde.";
-      }      
+      // Executa o comando SQL e verifica se houve algum erro
+      try {
+        // Executa o comando SQL e retorna o ID do usuário inserido        
+        $createUser->execute();
+        // Capturar id cadastrado                
+        $result = mysqli_insert_id($conexao);        
+        return ($result);
+      } catch (\mysqli_sql_exception $e) {
+        // Verifica se o erro é "Duplicate entry"
+        return $e;
+        if ($e->getCode() == 1062) {
+          // Trata o erro (exibindo uma mensagem de erro para o usuário)
+          return ($e->getCode());
+        } else {
+          // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
+          return ($e->getCode());
+        }      
+      }
+    }else{     
+      //retorna a conexao como erro de conexao 
+      return $conexao;
     }
   }
 
@@ -104,16 +114,27 @@ class UserModel {
     // Código do método
     $conexao = \App\Model\Database::conectar();
 
+    if(get_class($conexao) == "mysqli"){
     // Prepara o comando SQL e vincula os parâmetros
     $deleteUser = $conexao->prepare("DELETE FROM user WHERE iduser = ?");
     $deleteUser->bind_param("i", $idUser);
+    try {
 
-    // Executa o comando SQL e verifica se houve algum erro
-    if ($deleteUser->execute()) {
-      return true;
-    } else {
-      throw new Exception("Erro ao deletar usuário: " . $conexao->errorInfo()[2]);
-      return false;
+      $deleteUser->execute();
+    } catch (\mysqli_sql_exception $e) {
+      // Verifica se o erro é "Duplicate entry"
+      return $e;
+      if ($e->getCode() == 1062) {
+        // Trata o erro (exibindo uma mensagem de erro para o usuário)
+        return ($e->getCode());
+      } else {
+        // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
+        return ($e->getCode());
+      }      
+    }
+    }else{     
+      //retorna a conexao como erro de conexao 
+      return $conexao;
     }
   }
 
@@ -148,7 +169,7 @@ class UserModel {
   public function getById($idUser) {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
     $byId = $conexao->prepare("SELECT * FROM user WHERE iduser = ?");
     $byId->bind_param("i", $idUser);
@@ -161,6 +182,10 @@ class UserModel {
       $users[] = $row;
     }
     return $users;
+   } else {
+    //retorna a conexao como erro de conexao 
+    return $conexao;
+   }
   }
 
   /**
@@ -171,7 +196,7 @@ class UserModel {
   public function getByEmail($email) {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
     $byEmail = $conexao->prepare("SELECT * FROM user WHERE email LIKE ?");
     $byEmail->bind_param("s", $email);
@@ -184,6 +209,10 @@ class UserModel {
       $users[] = $row;
     }
     return $users;
+   } else {
+      //retorna a conexao como erro de conexao 
+      return $conexao;
+   }
   }
 
   /**
@@ -193,7 +222,7 @@ class UserModel {
   public function getAll() {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL
     $allUsers = $conexao->prepare("SELECT * FROM user");
 
@@ -205,6 +234,10 @@ class UserModel {
       $users[] = $row;
     }
     return $users;
+   } else {
+       //retorna a conexao como erro de conexao 
+       return $conexao;
+   }
   }
 
 }

@@ -46,7 +46,7 @@ class DepartmentController {
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ' . $e->getMessage();
     }
 
     // Instancia um objeto da classe DepartmentModel e salva os dados do setor no banco de dados
@@ -80,7 +80,7 @@ class DepartmentController {
       return $data ? $data : throw new Exception('Setor não encontrado.');
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ERROR DE EXIBIÇÃO ' . $e->getMessage();
     }
   }
 
@@ -108,7 +108,7 @@ class DepartmentController {
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+      return  '[ATENÇÃO] OCORREU UM ERRO AO TENTAR ATUALIZAR' . $e->getMessage();
     }
 
     // Instancia um objeto da classe DepartmentModel e salva os dados do setor no banco de dados
