@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@300;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/usercss/normalize.css">
+    <link rel="stylesheet" href="./assets/css/usercss/style.css">
+    <title>SATISCULTURA</title>
+    <style>
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #0b84c4;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            margin: 10px;
+            border: #95e1ff 2px solid;
+            border-radius: 15px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        a {
+            width: 110px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        label, .question {
+            font-size: 28px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Botão para ler em voz alta -->
+    <button class="leitura-voz-alta" id="speak">Leitura em voz alta</button>
+
+    <div id="conteudo-lido">
+        <div class="container-fluid">
+            <section class="section-logo">
+                <img class="img-logo" src="./assets/img/logo-senai.png" alt="Logo do Senai">
+            </section>
+            <section class="section-text">
+                <h1 class="title">PESQUISA DE SATISFAÇÃO</h1>
+                <p class="paragraph"></p>
+                <h2 class="question">COMO VOCÊ AVALIA O ATENDIMENTO?</h2>
+            </section>
+            <section class="section-button">
+                <label>
+                    <a class="pessimo" href="index-agradecimento.html">
+                        <img alt="1" src="./assets/img/pessimo.png">
+                    </a>
+                    Péssimo
+                </label>
+                <label>
+                    <a class="ruim" href="index-agradecimento.html">
+                        <img alt="1" src="./assets/img/ruim.png">
+                    </a>
+                    Ruim
+                </label>
+                <label>
+                    <a class="regular" href="index-agradecimento.html">
+                        <img alt="1" src="./assets/img/neutro.png">
+                    </a>
+                    Regular
+                </label>
+                <label>
+                    <a class="bom" href="index-agradecimento.html">
+                        <img alt="1" src="./assets/img/bom.png">
+                    </a>
+                    Bom
+                </label>
+                <label>
+                    <a class="excelente" href="index-agradecimento.html">
+                        <img alt="1" src="./assets/img/excelente.png">
+                    </a>
+                    Excelente
+                </label>
+            </section>
+        </div>
+    </div>
+    <!-- Script do text-speech -->
+    <script>
+        //Implementar a leitura assim que a página carregar com um cooldown de uns 2 minutos ou algo assim
+        
+        var speakButton = document.querySelector('#speak');
+        speakButton.addEventListener('click', () => {
+            if (!synth.speaking) {
+                lerPagina();
+            } else {
+                alert('A página já está sendo lida.');
+            }
+        });
+
+        const synth = window.speechSynthesis; // Ativação da leitura de tela da API
+
+        /**
+         * Função principal para ler a página
+         */
+        function falarTexto(texto) {
+            if (!synth) {  //Se o navegador não for suportado vai aparecer esse mensagem
+                alert('A API não é suportada neste navegador.');
+                return;
+            }
+
+            /**
+             * const utterance = Constante que carrega a função de leitura de páginas da API
+             * utterance.lang = Linguagem da voz que vai falar
+             * utterance.rate = velocidade da leitura
+             */
+            const utterance = new SpeechSynthesisUtterance(texto);
+            utterance.lang = 'pt-BR';
+            utterance.rate = 1.25;
+
+            synth.speak(utterance);
+        }
+
+        /**
+         * Constante texto representa o conteudo que vai lido, esse valor é passado para função falarTexto
+         */
+        function lerPagina() {
+            const conteudo = document.querySelector('#conteudo-lido');
+            const texto = conteudo.innerText;
+            falarTexto(texto);
+        }
+
+        /**
+         * Função que faz um loop da leitura da página
+         */
+        function leituraEmLoop() {
+            lerPagina();
+            setInterval(lerPagina, 50 * 1000); // 50 sec
+        }
+
+        /**
+         * Toda vez que a página for carregada é feito uma verificação, se a API estiver lendo a página...
+         * ...ele vai cancelar a leitura atual e recomeçar, se não estiver falando, ele vai começar a falar
+         */
+        let intervalo;
+        window.addEventListener('DOMContentLoaded', (event) => {
+            intervalo = setInterval(() => {
+                if (synth.speaking) {
+                    synth.cancel();
+                    clearInterval(intervalo);
+                    leituraEmLoop();
+                }
+            },);
+            leituraEmLoop();
+        }); 
+
+      </script>
+</body>
+</html>
