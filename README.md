@@ -1,6 +1,6 @@
-<div align="center">
-  ![satiscultura](https://user-images.githubusercontent.com/129605280/233509711-7efc72f3-6f08-4987-bbda-ef12462bc3ea.png)
-</div>
+<h1 align="center">
+  <img alt="Logo" title="#SatisCultura" src="./assets/img/satiscultura.png" />
+</h1>
 
 ## Sobre 
 
