@@ -13,6 +13,11 @@ Front-End
 
 Back-End
 - PHP
--
+
 Banco de Dados:
--MySql
+- MySql
+
+## Autoria
+
+Turma G82893 Senai Camaçari - Ba
+Técnico em Análise e Desenvolvimento de Sistemas 
