@@ -6,7 +6,7 @@ namespace App\Controller;
  * Classe responsável pelo controle das avaliações
  */
 
-require_once("../../core/Log.php");
+//require_once("../../core/Log.php");
 
 use Exception;
 
@@ -38,34 +38,33 @@ class SurveyController {
   * @param array $data - Array com os dados da nova avaliação
   * @return int - ID da nova avaliação inserida
   */
-  public function store($data) {
+  public function store($surveyData) {
     // Código do método
-    try {
+    try
+    {
       // Verifica se todos os campos obrigatórios foram preenchidos
-      if (empty($data['idDepartment']) || empty($data['score']) || empty($data['reason']) || empty($data['comment'])) {
+      if (empty($surveyData['idDepartment']) || empty($surveyData['score']) || empty($surveyData['reason']) || empty($surveyData['comment']))
+      {
         throw new Exception('Por favor, preencha todos os campos obrigatórios.');
       }
-    } catch (Exception $e) {
-        // Exibir mensagem de erro para o usuário
-        return '[ATENÇÃO] ' . $e->getMessage();
+      
+      else 
+      {
+        $surveyModel = ((new \App\Model\SurveyModel())->createResult($surveyData['idDepartment'], $surveyData['score'], $surveyData['reason'], $surveyData['comment']));
+        if (is_integer($surveyModel)) {      
+          return true;
+        } else{
+          throw new \Exception("[ATENÇÃO] Ocorreu um erro ao tentar criar .");
+        }
+      }
     }
-
-    // Instancia um objeto da classe LocalModel e salva os dados do setor no banco de dados
-    if (($data['idDepartment']) && ($data['score']) && ($data['reason']) && ($data['comment'])) {
-      $createResult = (new \App\Model\SurveyModel())->createResult($data['idDepartment'], $data['score'], $data['reason'], $data['comment']);
-      // Criação do local bem sucedida
-      return true;
-
-      $department = $data['idDepartment'];
-
-      // Registra a LOG de criação da avaliação
-      $message = 'Cadastrou um novo setor \n [ID SETOR AVALIADO]: {$department}';
-      \App\Core\Logger::logSurvey($message);
-    } else {
-      // Criação do local falhou
-      return false;
+    // Exibir mensagem de erro para o usuário
+    catch (Exception $e)
+    {
+      return ($e->getMessage());
     }
   }
+  
 
   /**
   * Exibe as informações de uma avaliação
@@ -130,7 +129,7 @@ class SurveyController {
       }
     } catch (Exception $e) {
       // Exibir mensagem de erro para o usuário
-      return '[ATENÇÃO] ' . $e->getMessage();
+      echo '[ATENÇÃO] ' . $e->getMessage();
     }
   }
 }

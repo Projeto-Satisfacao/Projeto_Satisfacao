@@ -282,8 +282,12 @@ class UserController {
     if ($this->isValidEmail($email) && $this->isValidPassword($password)) {
       $editUser = (new \App\Model\UserModel())->updateUser($idUser, $data['username'], $data['email'], $data['password'], $data['status']);
       // Atualização do usuário bem sucedida
-      return ($editUser) ? true : false;
-
+      if (is_integer($editUser)){      
+        return true;  
+      }else{
+        return("[ATENÇÃO] Ocorreu um erro ao tentar atualizar, tente novamente mais tarde.");
+      }
+      
       // Registra a LOG de atualização do usuário
       $message = 'Atualizou as informações de um usuário \n [USUÁRIO ATUALIZADO]: {$username}';
       \App\Core\Logger::logUser($message);
