@@ -6,7 +6,7 @@ namespace App\Controller;
  * Classe responsável pelo controle dos locais
  */
 
-require_once("../../core/Log.php");
+//require_once("../../core/Log.php");
 
 use Exception;
 
@@ -30,7 +30,7 @@ class LocalController {
   {
     // Código do método
     // Redireciona para a página do formulário de criação de local
-    header("Location: /LocalFormView.php");
+    header("Location: app/view/LocalFormView.php");
     exit;
   }
 
@@ -39,33 +39,23 @@ class LocalController {
   * @param array $data - Array com os dados do novo local
   * @return int - ID do novo local
   */
-  public function store($data)
-  {
+  public function store($localData) {
     // Código do método
     try {
-      // Verifica se todos os campos obrigatórios foram preenchidos
-      if (empty($data['local']) || empty($data['address']) || empty($data['url'])) {
-        throw new Exception('Por favor, preencha todos os campos obrigatórios.');
+      //Verifica se todos os campos obrigatórios foram preenchidos
+      if (empty($localData['local']) || empty($localData['address']) || empty($localData['url']))  {
+        throw new \Exception('Por favor, preencha todos os campos obrigatórios.');
+      } else {
+        $localModel = ((new \App\Model\LocalModel()))->createLocal($localData['local'], $localData['address'], $localData['url']);        
+        if (is_integer($localModel)) {      
+          return $localModel;
+        } else{
+           throw new \Exception("[ATENÇÃO] Ocorreu um erro ao criar o local.");
+        }
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
-    }
-
-    // Instancia um objeto da classe LocalModel e salva os dados do setor no banco de dados
-    if (($data['local']) && ($data['address']) && ($data['url'])) {
-      $createLocal = (new \App\Model\LocalModel())->createLocal($data['local'], $data['address'], $data['url']);
-      // Criação do local bem sucedida
-      return true;
-
-      $local = $data['local'];
-
-      // Registra a LOG de criação do local
-      $message = 'Cadastrou um novo local \n [LOCAL CADASTRADO]: {$local}';
-      \App\Core\Logger::logLocal($message);
-    } else {
-      // Criação do local falhou
-      return false;
+        return $e->getMessage();
     }
   }
 
@@ -84,7 +74,7 @@ class LocalController {
       return $data ? $data : throw new Exception('Setor não encontrado.');
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ERROR DE EXIBIÇÃO' . $e->getMessage();
     }
   }
 
@@ -104,7 +94,7 @@ class LocalController {
   * Processa os dados de atualização de um local
   * @param int $idLocal - ID do local a ser atualizado
   */
-  public function update($idLocal)
+  public function update($idLocal, $data)
   {
     // Código do método
     try {
@@ -114,14 +104,17 @@ class LocalController {
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] OCORREU UM ERRO AO TENTAR ATUALIZAR' . $e->getMessage();
     }
-
-    // Instancia um objeto da classe LocalModel e salva os dados do local no banco de dados
+    // Instancia um objeto da classe LocalModel e salva os dados do local no banco de dados 
     if (($data['local']) && ($data['address']) && ($data['url'])) {
       $updateLocal = (new \App\Model\LocalModel())->updateLocal($idLocal, $data['local'], $data['address'], $data['url']);
       // Criação do local bem sucedida
-      return true;
+      if (is_integer($updateLocal)) {      
+        return $updateLocal;
+      } else{
+         return ("[ATENÇÃO] Ocorreu um erro ao tentar atualizar.");
+      }
 
       // Registra a LOG de atualização do local
       $message = 'Atualizou as informações de um local \n [LOCAL ATUALIZADO]: {$local}';
@@ -141,6 +134,12 @@ class LocalController {
     // Código do método
     // Instancia um objeto da classe LocalModel e remove o local com o ID especificado
     $deleteLocal = (new \App\Model\LocalModel())->deleteLocal($idLocal);
+    //exit(var_dump($deleteLocal));
+    if (empty($deleteLocal)) {      
+      return $deleteLocal;
+    } else{
+       return ("[ATENÇÃO] Ocorreu um erro ao tentar deletar local.");
+    }
 
     // Registra a LOG de exclusão do local
     $message = 'Deletou um local \n [ID DELETADO]: {$idLocal}';

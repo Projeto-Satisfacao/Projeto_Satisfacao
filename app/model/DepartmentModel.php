@@ -34,22 +34,34 @@ class DepartmentModel extends LocalModel {
   *  @param string $description - Descrição do setor
   *  @return int - ID do setor inserido
   */
+  
   public function createDepartment($department, $description, $idLocal) {
-    // Código do método
+      // Código do método
     $conexao = \App\Model\Database::conectar();
+    if (get_class($conexao) == "mysqli") {
+        // Prepara o comando SQL e vincula os parâmetros
+        $createDepartment = $conexao->prepare("INSERT INTO department (department, description, local_idlocal) VALUES (?, ?, ?)");
+        $createDepartment->bind_param("ssi", $department, $description, $idLocal);
 
-    // Prepara o comando SQL e vincula os parâmetros
-    $createDepartment = $conexao->prepare("INSERT INTO department (department, description, local_idlocal) VALUES (?, ?, ?)");
-    $createDepartment->bind_param("ssi", $department, $description, $idLocal);
-
-    // Executa o comando SQL e retorna o ID do departamento inserido
-    if ($createDepartment->execute()) {
-        return true;
-    } else {
-        throw new Exception("Erro ao criar departamento: " . $conexao->error);
-        return false;
+      try {
+        // Executa o comando SQL e retorna o ID do departamento inserido
+        $createDepartment->execute();
+        $result = mysqli_insert_id($conexao);
+          return $result;
+      } catch (\mysqli_sql_exception $e) {
+        if ($e->getCode() == 1062) {
+          // Trata o erro (exibindo uma mensagem de erro para o departamento)     
+          return ($e->getCode());
+        } else {
+          // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o departamento)
+          return ($e->getCode());
+        }
+    } else {     
+      //retorna a conexao como erro de conexao 
+      return $conexao;
     }
-  }
+  }   
+
 
   /**
   *  Atualiza um setor existente
@@ -58,21 +70,35 @@ class DepartmentModel extends LocalModel {
   *  @param string $description - Nova descrição do setor
   *  @return void
   */
-  public function updateDepartment($idDepartment, $department, $description) {
-    // Código do método
+
+  public function updateDepartment($idDepartment, $department, $description) 
+  {
     $conexao = \App\Model\Database::conectar();
+  
+    if (get_class($conexao) == "mysqli") {
+       // Prepara o comando SQL e vincula os parâmetros
+      $updateDepartment = $conexao->prepare("UPDATE department SET department = ?, description = ? WHERE iddepartment = ?");
+      $updateDepartment->bind_param("ssi", $department, $description, $idDepartment);
+  
+      try {
+       // Executa o comando SQL e retorna o ID do departamento inserido
+        $updateDepartment->execute();
+        $result = $conexao->insert_id;
+        return $result;
+      } catch (\mysqli_sql_exception $e) {
 
-    // Prepara o comando SQL e vincula os parâmetros
-    $updateDepartment = $conexao->prepare("UPDATE department SET department = ?, description = ? WHERE iddepartment = ?");
-    $updateDepartment->bind_param("ssi", $department, $description, $idDepartment);
+        if ($e->getCode() == 1062) {
 
-    // Executa o comando SQL e verifica se houve algum erro
-    if ($updateDepartment->execute()) {
-        return true;
-    } else {
-        throw new Exception("Erro ao atualizar departamento: " . $conexao->error);
-        return false;
-    }
+          return ($e->getCode());
+        } else {
+
+          return $e->getCode();
+        }
+      }
+      } else {
+        return $conexao;
+      }
+     
   }
 
   /**
@@ -82,18 +108,28 @@ class DepartmentModel extends LocalModel {
   */
   public function deleteDepartment($idDepartment) {
     // Código do método
+
     $conexao = \App\Model\Database::conectar();
+    if (get_class($conexao) == "mysqli") {
+      // Prepara o comando SQL e vincula os parâmetros
+      $deleteDepartment = $conexao->prepare("DELETE FROM department WHERE iddepartment = ?");
+      $deleteDepartment->bind_param("i", $idDepartment);
+      try {
+        // Executa o comando SQL e retorna o ID do departamento inserido
+        $deleteDepartment->execute()
+      catch(\mysqli_sql_exception $e){} 
 
-    // Prepara o comando SQL e vincula os parâmetros
-    $deleteDepartment = $conexao->prepare("DELETE FROM department WHERE iddepartment = ?");
-    $deleteDepartment->bind_param("i", $idDepartment);
+        if ($e->getCode() == 1062) {
 
-    // Executa o comando SQL e verifica se houve algum erro
-    if ($deleteDepartment->execute()) {
-        return true;
+          return ($e->getCode());
+        } else {
+
+          return ($e->getCode());
+        }
+      }
     } else {
-        throw new Exception("Erro ao deletar departamento: " . $conexao->error);
-        return false;
+      //retorna a conexao como erro de conexao 
+      return $conexao;
     }
   }
 
@@ -105,7 +141,7 @@ class DepartmentModel extends LocalModel {
   public function getByName($department) {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
     $getByName = $conexao->prepare("SELECT * FROM department WHERE department LIKE ?");
     $getByName->bind_param("s", $department);
@@ -118,6 +154,10 @@ class DepartmentModel extends LocalModel {
       $departments[] = $row;
     }
     return $departments;
+   } else {
+      //retorna a conexao como erro de conexao 
+      return $conexao;
+   }
   }
 
   /**
@@ -128,7 +168,7 @@ class DepartmentModel extends LocalModel {
   public function getById($idDepartment) {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
     $getById = $conexao->prepare("SELECT * FROM department WHERE iddepartment = ?");
     $getById->bind_param("i", $idDepartment);
@@ -141,6 +181,10 @@ class DepartmentModel extends LocalModel {
       $departments[] = $row;
     }
     return $departments;
+  } else {     
+    //retorna a conexao como erro de conexao 
+    return $conexao;
+  }
   }
 
   /**
@@ -150,7 +194,7 @@ class DepartmentModel extends LocalModel {
   public function getAll() {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
     $allDepartments = $conexao->prepare("SELECT * FROM department");
 
@@ -162,6 +206,10 @@ class DepartmentModel extends LocalModel {
       $departments[] = $row;
     }
     return $departments;
+   } else {     
+    //retorna a conexao como erro de conexao 
+    return $conexao;
+  }
   }
 
 }

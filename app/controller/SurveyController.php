@@ -47,7 +47,7 @@ class SurveyController {
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ' . $e->getMessage();
     }
 
     // Instancia um objeto da classe LocalModel e salva os dados do setor no banco de dados
@@ -82,7 +82,7 @@ class SurveyController {
       return $data ? $data : throw new Exception('Avaliação não encontrada.');
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ERRO DE EXIBIÇÃO' . $e->getMessage();
     }
   }
 
@@ -130,7 +130,7 @@ class SurveyController {
       }
     } catch (Exception $e) {
       // Exibir mensagem de erro para o usuário
-      echo '[ATENÇÃO] ' . $e->getMessage();
+      return '[ATENÇÃO] ' . $e->getMessage();
     }
   }
 }

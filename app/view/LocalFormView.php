@@ -3,7 +3,7 @@
 /**
  * Classe responsável pelos dados do formulário de criação ou edição de um local e seus detalhes
  */
-require_once("../autoload.php");
+require_once("../../autoload.php");
 
 class LocalFormView {
 

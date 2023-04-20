@@ -42,7 +42,7 @@ class UserController {
   * @param string $password - Senha
   * @return boolean - Verdadeiro se a autenticação for bem sucedida, falso caso contrário
   */
-  private function login($email, $password)
+  public function login($email, $password)
   {
     // Código do método
     // Verifica se o e-mail e a senha são válidos
@@ -53,7 +53,7 @@ class UserController {
       } 
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ERRO AO TENTAR REALIZAR O LOGIN' . $e->getMessage();
     }
 
     // Implementar os métodos que verificam as informações no banco para fazer a autenticação
@@ -66,7 +66,7 @@ class UserController {
       } 
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ERRO AO TENTAR REALIZAR O LOGIN' . $e->getMessage();
     }
 
     // Verifica se a senha está correta
@@ -81,7 +81,7 @@ class UserController {
       return true;
     } else {
       // Autenticação falhou
-      echo '[ATENÇÃO] A senha informada está incorreta.';
+      return '[ATENÇÃO] A senha informada está incorreta.';
     }
   }
 
@@ -159,7 +159,7 @@ class UserController {
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ' . $e->getMessage();
         exit;
     }
 
@@ -171,7 +171,7 @@ class UserController {
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ' . $e->getMessage();
         exit;
     }
 
@@ -182,7 +182,7 @@ class UserController {
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] Senha inválida' . $e->getMessage();
         exit;
     }
 
@@ -225,7 +225,7 @@ class UserController {
       return $data ? $data : throw new Exception('Usuário não encontrado.');
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ' . $e->getMessage();
     }
   }
 
@@ -256,21 +256,21 @@ class UserController {
       }
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
-        echo '[ATENÇÃO] ' . $e->getMessage();
+        return '[ATENÇÃO] ERRO AO TENTAR ATUALIZAR O USUARIO' . $e->getMessage();
         exit;
     }
 
     // Verifica se o e-mail é válido
     if (!$this->isValidEmail($data['email'])) {
       // Exibir mensagem de erro para o usuário
-      echo '[ATENÇÃO] O e-mail informado não é válido. Verifique se digitou corretamente.';
+      return '[ATENÇÃO] O e-mail informado não é válido. Verifique se digitou corretamente.';
       exit;
     }
 
     // Verifica se a senha é válida
     if (!$this->isValidPassword($data['password'])) {
       // Exibir mensagem de erro para o usuário
-      echo '[ATENÇÃO] A senha deve ter pelo menos 6 caracteres.';
+      return '[ATENÇÃO] A senha deve ter pelo menos 6 caracteres.';
       exit;
     }
     // Define as variáveis para validação
