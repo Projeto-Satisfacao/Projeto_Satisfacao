@@ -60,18 +60,41 @@ class SurveyModel extends DepartmentModel {
     // Código do método
     $conexao = \App\Model\Database::conectar();
 
+    if(get_class($conexao) == "mysqli"){
     // Prepara o comando SQL e vincula os parâmetros
     $createResult = $conexao->prepare("INSERT INTO survey (department_iddepartment, score, reason, comment) VALUES (?, ?, ?, ?)");
     $createResult->bind_param("iiss", $idDepartment, $score, $reason, $comment);
     
-    // Executa o comando SQL e retorna o ID do departamento inserido
-    if ($createResult->execute()) {
-      return true;
-    } else {
-      throw new Exception("Erro ao criar avaliação: " . $conexao->error);
-      return false;
+    try {
+      // Executa o comando SQL e retorna o ID do departamento inserido      
+      $createResult->execute();
+      // Capturar id cadastrado                
+      $result = mysqli_insert_id($conexao); 
+      return ($result);    
+    } catch(\mysqli_sql_exception $e) {
+      {
+        // Verifica se o erro é "Duplicate entry"
+        return $e;
+        if ($e->getCode() == 1062) {
+          // Trata o erro (exibindo uma mensagem de erro para o usuário)    
+          return ($e->getCode());
+        } else {
+          // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
+          return ($e->getCode());
+        }              
+      }
     }
+    }else{     
+        //retorna a conexao como erro de conexao 
+        return $conexao;
+      }
+
   }
+
+   
+  
+   
+  
   
   /**
    * Deleta uma avaliação para um setor
@@ -79,6 +102,7 @@ class SurveyModel extends DepartmentModel {
    * @return bool - True se a avaliação foi deletada com sucesso, False caso contrário
    */
   public function deleteResult($idSurvey) {
+  if (get_class($conexao) == "mysqli") {
     // Código do método
     $conexao = \App\Model\Database::conectar();
 
@@ -87,13 +111,23 @@ class SurveyModel extends DepartmentModel {
     $deleteSurvey->bind_param("i", $idSurvey);
     
     // Executa o comando SQL e verifica se houve algum erro
-    if ($deleteSurvey->execute()) {
-      return true;
-    } else {
-      throw new Exception("Erro ao deletar pesquisa: " . $conexao->error);
-      return false;
+    try{
+      $deleteSurvey->execute();
+    } catch (\mysqli_sql_exception $e) {
+      // Verifica se o erro é "Duplicate entry"
+      if ($e->getCode() == 1062) {
+        // Trata o erro (exibindo uma mensagem de erro para o usuário)
+        return ($e->getCode());
+      } else {
+        // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
+        return ($e->getCode());
+      }      
     }
-  }
+    }else{     
+      //retorna a conexao como erro de conexao 
+      return $conexao;
+    }
+  }  
   
   /**
    * Lista todas as avaliações existentes
@@ -101,6 +135,7 @@ class SurveyModel extends DepartmentModel {
    */
   public function getAll() {
     // Código do método
+    if (get_class($conexao) == "mysqli") {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
@@ -113,7 +148,11 @@ class SurveyModel extends DepartmentModel {
     while ($row = $result->fetch_assoc()) {
       $surveys[] = $row;
     }
-    return $surveys;
+      return $surveys;
+    }else{
+    //retorna a conexao como erro de conexao 
+    return $conexao; 
+      }
   }
   
   /**
@@ -121,8 +160,10 @@ class SurveyModel extends DepartmentModel {
    * @param int $idSurvey - ID da avaliação
    * @return array - Lista de avaliações filtradas pelo ID
    */
+  
   public function getById($idSurvey) {
     // Código do método
+    if (get_class($conexao) == "mysqli"){
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
@@ -137,6 +178,10 @@ class SurveyModel extends DepartmentModel {
       $surveys[] = $row;
     }
     return $surveys;
+    }else {
+       //retorna a conexao como erro de conexao 
+       return $conexao;
+    }
   }
   
   /**
@@ -146,6 +191,8 @@ class SurveyModel extends DepartmentModel {
    */
   public function getByScore($score) {
     // Código do método
+    if (get_class($conexao) == "mysqli") {
+      // Prepara o comando SQL e vincula os parâmetros
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
@@ -160,6 +207,10 @@ class SurveyModel extends DepartmentModel {
       $surveys[] = $row;
     }
     return $surveys;
+    }else{
+       //retorna a conexao como erro de conexao 
+       return $conexao;
+    }
   }
   
   /**
@@ -169,6 +220,8 @@ class SurveyModel extends DepartmentModel {
    */
   public function getByReason($reason) {
     // Código do método
+    if (get_class($conexao) == "mysqli") {
+      // Prepara o comando SQL e vincula os parâmetros
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
@@ -183,6 +236,10 @@ class SurveyModel extends DepartmentModel {
       $surveys[] = $row;
     }
     return $surveys;
+    } else {
+       //retorna a conexao como erro de conexao 
+       return $conexao;
+    }
   }
   
   /**
@@ -192,6 +249,8 @@ class SurveyModel extends DepartmentModel {
    */
   public function getByComment($comment) {
     // Código do método
+    if (get_class($conexao) == "mysqli") {
+      // Prepara o comando SQL e vincula os parâmetros
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
@@ -206,6 +265,10 @@ class SurveyModel extends DepartmentModel {
       $surveys[] = $row;
     }
     return $surveys;
+    } else {
+       //retorna a conexao como erro de conexao 
+       return $conexao;
+    }
   }
   
   /**
@@ -215,6 +278,8 @@ class SurveyModel extends DepartmentModel {
    */
   public function getByLocal($local) {
     // Código do método
+    if (get_class($conexao) == "mysqli") {
+      // Prepara o comando SQL e vincula os parâmetros
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
@@ -229,6 +294,10 @@ class SurveyModel extends DepartmentModel {
       $surveys[] = $row;
     }
     return $surveys;
+    } else {
+       //retorna a conexao como erro de conexao 
+       return $conexao;
+    }
   }
   
   /**
@@ -238,6 +307,8 @@ class SurveyModel extends DepartmentModel {
    */
   public function getByDepartment($department) {
     // Código do método
+    if (get_class($conexao) == "mysqli") {
+      // Prepara o comando SQL e vincula os parâmetros
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
@@ -252,6 +323,10 @@ class SurveyModel extends DepartmentModel {
       $surveys[] = $row;
     }
     return $surveys;
+    } else {
+      //retorna a conexao como erro de conexao 
+      return $conexao;
+    }
   }
   
   /**
@@ -261,6 +336,7 @@ class SurveyModel extends DepartmentModel {
    */
   public function getByDate($date) {
     // Código do método
+    if (get_class($conexao) == "mysqli") {
     $conexao = \App\Model\Database::conectar();
 
     // Prepara o comando SQL e vincula os parâmetros
@@ -275,6 +351,10 @@ class SurveyModel extends DepartmentModel {
       $surveys[] = $row;
     }
     return $surveys;
+  }else {
+    //retorna a conexao como erro de conexao 
+    return $conexao;
+  }
   }
   
 }

@@ -9,6 +9,7 @@ namespace App\Model;
 require_once("./core/Database.php");
 
 use Exception;
+use mysqli_sql_exception;
 
 class LocalModel {
 
@@ -27,17 +28,31 @@ class LocalModel {
   public function createLocal($local, $address, $url) {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
-    // Prepara o comando SQL e vincula os parâmetros
-    $createLocal = $conexao->prepare("INSERT INTO local (local, address, url) VALUES (?, ?, ?)");
-    $createLocal->bind_param("sss", $local, $address, $url);
-
-    // Executa o comando SQL e retorna o ID do local inserido
-    if ($createLocal->execute()) {
-        return true;
-    } else {
-        throw new Exception("Erro ao criar local: " . $conexao->error);
-        return false;
+    
+    if(get_class($conexao) == "mysqli"){
+     // Prepara o comando SQL e vincula os parâmetros
+     $createLocal = $conexao->prepare("INSERT INTO local (local, address, url) VALUES (?, ?, ?)");
+     $createLocal->bind_param("sss", $local, $address, $url);
+    
+      try {
+        // Executa o comando SQL e retorna o ID do local inserido
+        $createLocal->execute();
+        // Capturar id cadastrado              
+        $result = \mysqli_insert_id($conexao);   
+        return $result;
+      } catch (\mysqli_sql_exception $e) {  
+        // Verifica se o erro é "Duplicate entry"
+        if ($e->getCode() == 1062) {
+          // Trata o erro (exibindo uma mensagem de erro para o local)     
+          return ($e->getCode());
+        } else {
+          // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o local)
+          return ($e->getCode());
+        }
+      }
+    } else{     
+      //retorna a conexao como erro de conexao 
+      return $conexao;
     }
   }
 
@@ -52,17 +67,33 @@ class LocalModel {
   public function updateLocal($idLocal, $local, $address, $url) {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    
+    if(get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
-    $updateLocal = $conexao->prepare("UPDATE local SET local = ?, address = ?, description = ? WHERE idlocal = ?");
-    $updateLocal->bind_param("sssi", $local, $address, $description, $idLocal);
+      $updateLocal = $conexao->prepare("UPDATE local SET local = ?, address = ?, url = ? WHERE idlocal = ?");
+      $updateLocal->bind_param("sssi", $local, $address, $url, $idLocal);
+      // Executa o comando SQL e verifica se houve algum erro
+      try {
+        // Executa o comando SQL e retorna o ID do local inserido   
+        $updateLocal->execute();
+       // Capturar id cadastrado                
+        $result = mysqli_insert_id($conexao);
+        return $result;
 
-    // Executa o comando SQL e verifica se houve algum erro
-    if ($updateLocal->execute()) {
-        return true;
+      } catch (\mysqli_sql_exception $e) {
+        // Verifica se o erro é "Duplicate entry"
+        return $e;
+       if ($e->getCode() == 1062) {
+        // Trata o erro (exibindo uma mensagem de erro para o local)
+          return ($e->getCode());
+       } else {
+          // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o local)
+          return ( $e->getMessage());
+        }
+      }
     } else {
-        throw new Exception("Erro ao atualizar local: " . $conexao->error);
-        return false;
+      // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o local)
+      return $conexao;
     }
   }
 
@@ -71,32 +102,41 @@ class LocalModel {
   *  @param int $idLocal - ID do local a ser deletado
   *  @return boolean - True se deletado com sucesso, false caso contrário
   */
-  public function deleteLocal($idLocal) {
+  public function deleteLocal($idLocal) 
+  {
     // Código do método
     $conexao = \App\Model\Database::conectar();
+    if (get_class($conexao) == "mysqli") {
 
     // Prepara o comando SQL e vincula os parâmetros
-    $deleteLocal = $conexao->prepare("DELETE FROM local WHERE idlocal = ?");
-    $deleteLocal->bind_param("i", $idLocal);
-
+     $deleteLocal = $conexao->prepare("DELETE FROM local WHERE idlocal = ?");
+     $deleteLocal->bind_param("i", $idLocal);
     // Executa o comando SQL e verifica se houve algum erro
-    if ($deleteLocal->execute()) {
+      try {
+        $deleteLocal->execute();
         return true;
-    } else {
-        throw new Exception("Erro ao deletar local: " . $conexao->error);
-        return false;
-    }
-  }
+      } catch (\mysqli_sql_exception $e) {
+        
+          // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o local)
+          return($e->getMessage());
+        
+      }
+   } else {
+      //retorna a conexao como erro de conexao 
+      return $conexao;
+   }
+  } 
 
   /**
   *  Filtra os locais pelo nome
   *  @param string $local - Nome do local a ser filtrado
   *  @return array - Array com os locais encontrados
   */
-  public function getByName($local) {
+  public function getByName($local) 
+  {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
     $getByName = $conexao->prepare("SELECT * FROM local WHERE local LIKE ?");
     $getByName->bind_param("s", $local);
@@ -109,6 +149,10 @@ class LocalModel {
       $locais[] = $row;
     }
     return $locais;
+   } else {
+      //retorna a conexao como erro de conexao 
+      return $conexao;
+   }
   }
 
   /**
@@ -116,10 +160,11 @@ class LocalModel {
   *  @param int $idLocal - ID do local a ser filtrado
   *  @return array - Array com o local encontrado
   */
-  public function getById($idLocal) {
+  public function getById($idLocal) 
+  {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
     $getById = $conexao->prepare("SELECT * FROM local WHERE idlocal = ?");
     $getById->bind_param("i", $idLocal);
@@ -132,16 +177,21 @@ class LocalModel {
       $locals[] = $row;
     }
     return $locals;
+   } else {     
+    //retorna a conexao como erro de conexao 
+    return $conexao;
+  }
   }
 
   /**
   *  Filtra todos os locais
   *  @return array - Array com todos os locais cadastrados no sistema
   */
-  public function getAll() {
+  public function getAll() 
+  {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
+    if (get_class($conexao) == "mysqli") {
     // Prepara o comando SQL e vincula os parâmetros
     $allLocals = $conexao->prepare("SELECT * FROM local");
 
@@ -153,6 +203,10 @@ class LocalModel {
       $locals[] = $row;
     }
     return $locals;
+    } else {     
+      //retorna a conexao como erro de conexao 
+      return $conexao;
+    }
   } 
 
 }

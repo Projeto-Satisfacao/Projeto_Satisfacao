@@ -27,7 +27,7 @@ class UserFormView {
   * Requisitos:
   * Este método requer que a página HTML correspondente esteja disponível na pasta de visualizações do sistema.
  */
-  public function displayUserForm() {
+  public function displayUserForm($userData = null) {
     // Código do método
     /**
      * Esse método deve definir o caminho da página que HTML onde está a página de criação/edição de usuários.
@@ -36,13 +36,7 @@ class UserFormView {
      * Caso não esteja nula, ele deve preencher os campos com os valores da variável, permitindo que o usuário os altere.
      */
 
-    echo '<form name="userData" action="call.php" method="post">
-        <input type="text" name="username" placeholder="username">
-        <input type="text" name="email" placeholder="email">
-        <input type="text" name="password" placeholder="password">
-        <input type="text" name="status" placeholder="status">
-        <input type="submit" value="Enviar">
-    </form>';
+    
   }
 
   /**
