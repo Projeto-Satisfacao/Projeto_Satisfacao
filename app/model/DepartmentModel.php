@@ -39,24 +39,25 @@ class DepartmentModel extends LocalModel {
       // Código do método
     $conexao = \App\Model\Database::conectar();
     if (get_class($conexao) == "mysqli") {
-        // Prepara o comando SQL e vincula os parâmetros
-        $createDepartment = $conexao->prepare("INSERT INTO department (department, description, local_idlocal) VALUES (?, ?, ?)");
-        $createDepartment->bind_param("ssi", $department, $description, $idLocal);
+      // Prepara o comando SQL e vincula os parâmetros
+      $createDepartment = $conexao->prepare("INSERT INTO department (department, description, local_idlocal) VALUES (?, ?, ?)");
+      $createDepartment->bind_param("ssi", $department, $description, $idLocal);
 
       try {
-        // Executa o comando SQL e retorna o ID do departamento inserido
+      // Executa o comando SQL e retorna o ID do departamento inserido
         $createDepartment->execute();
         $result = mysqli_insert_id($conexao);
-          return $result;
+        return $result;
       } catch (\mysqli_sql_exception $e) {
-        if ($e->getCode() == 1062) {
+         if ($e->getCode() == 1062) {
           // Trata o erro (exibindo uma mensagem de erro para o departamento)     
           return ($e->getCode());
         } else {
           // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o departamento)
           return ($e->getCode());
         }
-    } else {     
+      }
+    } else{     
       //retorna a conexao como erro de conexao 
       return $conexao;
     }
@@ -116,14 +117,10 @@ class DepartmentModel extends LocalModel {
       $deleteDepartment->bind_param("i", $idDepartment);
       try {
         // Executa o comando SQL e retorna o ID do departamento inserido
-        $deleteDepartment->execute()
-      catch(\mysqli_sql_exception $e){} 
+        $deleteDepartment->execute();
+      } catch(\mysqli_sql_exception $e){ 
 
         if ($e->getCode() == 1062) {
-
-          return ($e->getCode());
-        } else {
-
           return ($e->getCode());
         }
       }

@@ -6,7 +6,7 @@ namespace App\Controller;
  * Classe responsável pelo controle dos setores
  */
 
-require_once("../../core/Log.php");
+//require_once("../../core/Log.php");
 
 use Exception;
 
@@ -39,30 +39,29 @@ class DepartmentController {
   */
   public function store($data) {
     // Código do método
-    try {
+    try
+    {
       // Verifica se todos os campos obrigatórios foram preenchidos
-      if (empty($data['department']) || empty($data['description'])) {
+      if (empty($data['department']) || empty($data['description']) || empty($data['idLocal']))
+      {
         throw new Exception('Por favor, preencha todos os campos obrigatórios.');
       }
-    } catch (Exception $e) {
+
+      else
+      {
+        $createsurvey = ((new \App\Model\DepartmentModel())->createDepartment($data['department'], $data['description'], $data['idLocal']));
+        if (is_integer($createsurvey)) {      
+          return true;
+        } else{
+          throw new \Exception("[ATENÇÃO] Ocorreu um erro ao criar o departamento.");
+        }
+      }
+    } 
+    
+    catch (Exception $e)
+    {
         // Exibir mensagem de erro para o usuário
-        return '[ATENÇÃO] ' . $e->getMessage();
-    }
-
-    // Instancia um objeto da classe DepartmentModel e salva os dados do setor no banco de dados
-    if (($data['department']) && ($data['description'])) {
-      $createDepartment = (new \App\Model\DepartmentModel())->createDepartment($data['department'], $data['description']);
-      // Criação do setor bem sucedida
-      return true;
-
-      $department = $data['department'];
-
-      // Registra a LOG de criação do setor
-      $message = 'Cadastrou um novo setor \n [SETOR CADASTRADO]: {$department}';
-      \App\Core\Logger::logDepartment($message);
-    } else {
-      // Criação do setor falhou
-      return false;
+        return $e->getMessage();
     }
   }
 
@@ -99,7 +98,7 @@ class DepartmentController {
   * Processa os dados de atualização de um setor
   * @param int $idDepartment - ID do setor a ser atualizado
   */
-  public function update($idDepartment) {
+  public function update($idDepartment, $data) {
     // Código do método
     try {
       // Verifica se todos os campos obrigatórios foram preenchidos
@@ -113,9 +112,14 @@ class DepartmentController {
 
     // Instancia um objeto da classe DepartmentModel e salva os dados do setor no banco de dados
     if (($data['department']) && ($data['description'])) {
-      $editDepartment = (new \App\Model\DepartmentModel())->updateDepartment($idDepartment, $data['department'], $data['description']);
-      // Atualização do setor bem sucedida
-      return true;
+      $updateDepartment = (new \App\Model\DepartmentModel())->updateDepartment($idDepartment, $data['department'], $data['description']);
+      //verifica se o $updateDepartment retorna um inteiro
+      if (is_integer($updateDepartment)) {
+        return true;
+      } else{
+       //mensagem de erro para caso $updateDepartment  retorne um inteiro 
+        return ("[ATENÇÃO] Ocorreu um erro ao tentar atualizar o departamento.");
+      } 
 
       $department = $data['department'];
       
@@ -136,7 +140,13 @@ class DepartmentController {
     // Código do método
     // Instancia um objeto da classe DepartmentModel e remove o setor com o ID especificado
     $deleteDepartment = (new \App\Model\DepartmentModel())->deleteDepartment($idDepartment);
-
+    //verifica se o $deleteDepartment retorna nullo 
+    if (empty($deleteDepartment)) {
+      return true;
+    } else{
+      //mensagem de erro para caso $deleteDepartment retorne nullo 
+      return ("[ATENÇÃO] Ocorreu um erro ao tentar excluir um departamento.");
+    } 
     // Registra a LOG de exclusão do setor
     $message = 'Deletou um local \n [ID DELETADO]: {$idDepartment}';
     \App\Core\Logger::logDepartment($message);

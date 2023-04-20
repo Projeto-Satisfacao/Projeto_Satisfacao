@@ -85,7 +85,7 @@ class UserModel {
       // Executa o comando SQL e verifica se houve algum erro
       try {
         // Executa o comando SQL e retorna o ID do usuário inserido        
-        $createUser->execute();
+        $updateUser->execute();
         // Capturar id cadastrado                
         $result = mysqli_insert_id($conexao);        
         return ($result);

@@ -39,18 +39,20 @@ class LocalController {
   * @param array $data - Array com os dados do novo local
   * @return int - ID do novo local
   */
-  public function store($localData) {
+  public function store($data) {
     // Código do método
     try {
       //Verifica se todos os campos obrigatórios foram preenchidos
-      if (empty($localData['local']) || empty($localData['address']) || empty($localData['url']))  {
+      if (empty($data['local']) || empty($data['address']) || empty($data['url']))  {
         throw new \Exception('Por favor, preencha todos os campos obrigatórios.');
       } else {
-        $localModel = ((new \App\Model\LocalModel()))->createLocal($localData['local'], $localData['address'], $localData['url']);        
-        if (is_integer($localModel)) {      
-          return $localModel;
-        } else{
-           throw new \Exception("[ATENÇÃO] Ocorreu um erro ao criar o local.");
+        if (($data['local']) && ($data['address']) && ($data['url'])) {
+          $createlocal = ((new \App\Model\LocalModel()))->createLocal($data['local'], $data['address'], $data['url']);        
+          if (is_integer($createlocal)) {      
+            return $createlocal;
+          } else{
+            throw new \Exception("[ATENÇÃO] Ocorreu um erro ao criar o local.");
+          }
         }
       }
     } catch (Exception $e) {
@@ -94,8 +96,7 @@ class LocalController {
   * Processa os dados de atualização de um local
   * @param int $idLocal - ID do local a ser atualizado
   */
-  public function update($idLocal, $data)
-  {
+  public function update($idLocal, $data) {
     // Código do método
     try {
       // Verifica se todos os campos obrigatórios foram preenchidos
