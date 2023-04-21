@@ -9,7 +9,7 @@ session_start();
 // Verifica se o usuário fez login
 if(!isset($_SESSION['usuario'])) {
   // Redirecionar para a página de login se o usuário não estiver logado
-  header("Location: telas-front/index-login.html"); 
+  header("Location: pages/index-login.html"); 
   exit;
 }
 
