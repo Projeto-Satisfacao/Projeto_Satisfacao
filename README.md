@@ -39,6 +39,21 @@ Os requisitos de um sistema são as especificações e funcionalidades que o sis
 - Uso das PSRs e normas do PHP The Right Way;
 - Padrões nas telas para uma experiência de usuário consistente.
 
+### Requisitos não-funcionais
+
+- Proteção de dados e senhas, e encriptação de dados em transmissão.
+- Possibilidade de integração com outras ferramentas.
+- Realização periódica de backups dos dados.
+- Interface intuitiva e fácil de usar, com fluxo de navegação consistente.
+- Capacidade de processar e armazenar grandes quantidades de avaliações sem afetar o tempo de resposta, tempo de carregamento de páginas não deve exceder 3 segundos e transações de banco de dados devem ser realizadas em menos de 500ms.
+- Um sistema sempre disponível, com inatividade planejada fora do horário de pico e inatividade não planejada não superior a 1 hora.
+- Capacidade de lidar com um grande número de usuários e dados sem afetar o desempenho.
+- Possibilidade de personalização da interface do usuário.
+- Possibilidade de notificar os ADMs sobre novas avaliações ou erros.
+- Relatórios: disponibilidade de dados para criação de relatórios e gráficos.
+- Possibilidade de exportação de dados em formatos que facilitem a criação de relatórios e gráficos.
+- Monitoramento contínuo do sistema para identificar problemas e anomalias, com sistema de alertas para equipe de suporte.
+- Sistema altamente confiável, com tempo de inatividade planejado e comunicado com antecedência.
 
 
 ## Autoria
