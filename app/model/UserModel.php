@@ -31,6 +31,7 @@ class UserModel {
   */
   public function createUser($username, $email, $password, $status) {
     // Código do método   
+    var_dump('aq2');
     $conexao = \App\Model\Database::conectar();
         
     if(get_class($conexao) == "mysqli"){
