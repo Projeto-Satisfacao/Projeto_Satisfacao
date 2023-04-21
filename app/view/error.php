@@ -51,7 +51,7 @@ function showModal()
 
 function hideModal() 
 {
-    window.location.replace("./index-cadastros.php");
+    window.location.replace("./pages/index-cadastros.php");
 }
 
 </script>
