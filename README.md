@@ -19,6 +19,17 @@ Back-End
 Banco de Dados:
 - MySql
 
+## Instruções
+Para usar o sistema, basta seguir os seguintes passos:
+
+- Acesse o sistema através do seu dispositivo desktop ou totem disponível no local.
+
+- O sistema irá automaticamente detectar o local onde o dispositivo está localizado.
+
+- Escolha uma nota de 1 a 5 para avaliar o local.
+
+- Sua avaliação será registrada automaticamente.
+
 ## Requisitos do sistema
 Os requisitos de um sistema são as especificações e funcionalidades que o sistema deve ter para atender às necessidades dos usuários. Eles incluem, principalmente, requisitos funcionais e requisitos não-funcionais. Existem vários outros tipos de requisitos, o uso deles vai depender do projeto sendo trabalhado.
 
