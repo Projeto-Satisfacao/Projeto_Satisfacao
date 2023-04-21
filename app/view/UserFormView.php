@@ -3,7 +3,8 @@
 /**
  * Classe responsável pelos dados do formulário de criação ou edição de um usuário e seus detalhes
  */
-require_once("../autoload.php");
+require_once("autoload.php");
+require_once("error.php");
 
 class UserFormView {
 
@@ -27,7 +28,7 @@ class UserFormView {
   * Requisitos:
   * Este método requer que a página HTML correspondente esteja disponível na pasta de visualizações do sistema.
  */
-  public function displayUserForm($userData = null) {
+  public function displayUserForm() {
     // Código do método
     /**
      * Esse método deve definir o caminho da página que HTML onde está a página de criação/edição de usuários.
@@ -36,7 +37,13 @@ class UserFormView {
      * Caso não esteja nula, ele deve preencher os campos com os valores da variável, permitindo que o usuário os altere.
      */
 
-    
+    echo '<form name="userData" action="call.php" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="email" placeholder="email">
+        <input type="text" name="password" placeholder="password">
+        <input type="text" name="status" placeholder="status">
+        <input type="submit" value="Enviar">
+    </form>';
   }
 
   /**
@@ -77,13 +84,18 @@ class UserFormView {
     {
       // Verifica se todos os campos obrigatórios foram preenchidos
       if (empty($userData['username']) || empty($userData['email']) || empty($userData['password']) || empty($userData['status'])) {
-        throw new Exception('Por favor, preencha todos os campos obrigatórios.');
+        echo '<div class="custom-modal" id="customModal">
+                <div class="custom-modal-content">
+                  <p>Por favor, preencha todos os campos obrigatórios.</p>
+                  <button class="button-modal" onclick="hideModal()">Fechar</button>
+                </div>
+              </div>';
       }
       
       else 
       {
         $userModel = ((new \App\Model\UserModel())->createUser($userData['username'], $userData['email'], 
-                                                               $userData['password'], $userData['status']));
+        $userData['password'], $userData['status']));
       }
 
     }

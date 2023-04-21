@@ -13,6 +13,10 @@ export default function CreateFormElements({ inputs }) {
     inputEl.name = id;
     inputEl.required = true;
 
+    if (inputEl.type === 'password') {
+      inputEl.minLength = 6;
+    }
+
     container.appendChild(labelEl);
     container.appendChild(inputEl);
   });

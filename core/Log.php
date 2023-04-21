@@ -31,7 +31,7 @@ class Logger {
   * Registra uma ação no arquivo de LOG do Local
   * @param $message = mensagem a ser escrita
   */
-  public function logLocal($message)
+  public static function logLocal($message)
   {
     // REGISTRAR LOG
     date_default_timezone_set('America/Sao_Paulo');
@@ -50,7 +50,7 @@ class Logger {
   * Registra uma ação no arquivo de LOG do Setor
   * @param $message = mensagem a ser escrita
   */
-  public function logDepartment($message)
+  public static function logDepartment($message)
   {
     // REGISTRAR LOG
     date_default_timezone_set('America/Sao_Paulo');
@@ -69,7 +69,7 @@ class Logger {
   * Registra uma ação no arquivo de LOG do Survey
   * @param $message = mensagem a ser escrita
   */
-  public function logSurvey($message)
+  public static function logSurvey($message)
   {
     // REGISTRAR LOG
     date_default_timezone_set('America/Sao_Paulo');

@@ -108,7 +108,7 @@ h2 {
 /*estilo do botão de fechar a janela modal*/
 .close {
   position: absolute;
-  right: 110px;
+  right: 8000px;
   top: -12px;
   color: rgb(255, 251, 251);
   font-size: 40px;

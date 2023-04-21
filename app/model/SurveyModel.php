@@ -90,11 +90,6 @@ class SurveyModel extends DepartmentModel {
       }
 
   }
-
-   
-  
-   
-  
   
   /**
    * Deleta uma avaliação para um setor

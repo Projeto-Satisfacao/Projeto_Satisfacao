@@ -115,7 +115,7 @@ class SurveyController {
       // Verifica se o usuário é administrador, se não for, exibe uma mensagem de erro
       if ($_SESSION['admin']) {
         // Instancia um objeto da classe SurveyModel e remove a avaliação com o ID especificado
-        $deleteSurvey = (new \App\Model\SurveyModel())->deleteSurvey($idSurvey);
+        $deleteSurvey = (new \App\Model\SurveyModel())->deleteResult($idSurvey);
 
         // Registra a LOG de exclusão de avaliação
         $message = 'Deletou uma avaliação \n [ID DELETADO]: {$idSurvey}';
