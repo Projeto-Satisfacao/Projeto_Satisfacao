@@ -9,7 +9,21 @@
 
 </div>
 
-<h2 style="center" id="tecnologias">Sobre </h2>
+<p align="center">
+ <a href="#sobre">Sobre</a> •
+ <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#requisitos_sistema">Requisitos do Sistema</a> • 
+ <a href="#requisitos_funcionais">Requisitos Funcionais</a> 
+</p>
+
+<p align="center">
+ <a href="#requisitos_not">Requisitos Não Funcionais</a> •
+ <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#pre_requisitos">Pré Requisitos</a> • 
+ <a href="#licenca">Licença</a> 
+</p>
+
+<h2 style="center" id="sobre">Sobre</h2>
 
 A proposta do projeto é a criação de um aplicativo de avaliação para a prefeitura de Camaçari-Ba, com o objetivo de promover transparência e participação cidadã na gestão pública. O aplicativo permitirá que os cidadãos avaliem os serviços oferecidos pela prefeitura e seus órgãos, bem como os locais públicos pertencentes ao município. O objetivo é fornecer um canal direto de comunicação entre os cidadãos e a prefeitura, permitindo que os gestores tenham um feedback mais direto e preciso sobre a qualidade dos serviços oferecidos e possam tomar ações para melhorar a experiência do usuário.
 
@@ -79,7 +93,7 @@ Os requisitos não-funcionais são características que um sistema deve possuir,
 - Monitoramento contínuo do sistema para identificar problemas e anomalias, com sistema de alertas para equipe de suporte.
 - Sistema altamente confiável, com tempo de inatividade planejado e comunicado com antecedência.
 
-<h2 style="center" id="requisitos">Pré Requisitos</h2>
+<h2 style="center" id="pre_requisitos">Pré Requisitos</h2>
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: Git, Node.js e um servidor local. Além disto é bom ter um editor para trabalhar com o código como VSCode
 
 ```
