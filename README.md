@@ -37,6 +37,8 @@ Os requisitos de um sistema são as especificações e funcionalidades que o sis
 
 ### Requisitos funcionais
 
+Requisitos funcionais são funcionalidades que um sistema precisa ter para atender às necessidades do usuário. Eles descrevem o que o sistema deve fazer e como fazer. Eles estão relacionados às tarefas do usuário e incluem telas, campos e botões. Esses requisitos são fundamentais para garantir que o sistema seja útil e atenda aos objetivos do usuário.
+
 - Tela de avaliação com 5 opções de escolha (muito ruim, ruim, regular, bom, muito bom) e ícones correspondentes;
 - Tela de agradecimento com mensagem de agradecimento e redirecionamento automático para a tela de avaliação;
 - Tela de login de ADMs para acesso restrito à informações dos resultados das pesquisas;
@@ -53,6 +55,8 @@ Os requisitos de um sistema são as especificações e funcionalidades que o sis
 - Padrões nas telas para uma experiência de usuário consistente.
 
 ### Requisitos não-funcionais
+
+Os requisitos não-funcionais são características que um sistema deve possuir, mas que não estão diretamente relacionadas com as funcionalidades que ele oferece. Eles estão relacionados com aspectos como desempenho, segurança, usabilidade, manutenibilidade, etc. Esses requisitos são importantes para garantir que o sistema seja eficiente, seguro e fácil de usar, além de permitir que ele seja mantido e evoluído com facilidade ao longo do tempo.
 
 - Proteção de dados e senhas, e encriptação de dados em transmissão.
 - Possibilidade de integração com outras ferramentas.
@@ -72,4 +76,4 @@ Os requisitos de um sistema são as especificações e funcionalidades que o sis
 ## Autoria
 
 Turma G82893 Senai Camaçari - Ba
-Técnico em Análise e Desenvolvimento de Sistemas 
+Técnico em Análise e Desenvolvimento de Sistemas
