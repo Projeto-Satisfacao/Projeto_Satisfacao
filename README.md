@@ -52,6 +52,10 @@ Para usar o sistema, basta seguir os seguintes passos:
 
 - Sua avaliação será registrada automaticamente.
 
+Os usuários não têm acesso à lista de locais ou outras informações do sistema, sua única função é avaliar o local onde o dispositivo está localizado.
+
+Os administradores do sistema podem gerenciar as informações do sistema, como locais e serviços disponíveis para avaliação, através da interface de gerenciamento disponível para a prefeitura. Eles também podem visualizar as avaliações recebidas e gerar relatórios de desempenho.
+
 <h2 style="center" id="requisitos_sistema">Requisitos do Sistema</h2>
 
 Os requisitos de um sistema são as especificações e funcionalidades que o sistema deve ter para atender às necessidades dos usuários. Eles incluem, principalmente, requisitos funcionais e requisitos não-funcionais. Existem vários outros tipos de requisitos, o uso deles vai depender do projeto sendo trabalhado.
