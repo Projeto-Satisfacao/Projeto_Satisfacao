@@ -72,6 +72,16 @@ Os requisitos não-funcionais são características que um sistema deve possuir,
 - Monitoramento contínuo do sistema para identificar problemas e anomalias, com sistema de alertas para equipe de suporte.
 - Sistema altamente confiável, com tempo de inatividade planejado e comunicado com antecedência.
 
+### Pré-requisitos
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: Git, Node.js e um servidor local. Além disto é bom ter um editor para trabalhar com o código como VSCode
+
+```
+# Clone este repositório
+$ git clone https://github.com/Projeto-Satisfacao/Projeto_Satisfacao.git
+
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd Projeto_Satisfacao
+```
 
 ## Autoria
 
