@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Model;
 
 /**
-* Classe responsável pelos dados das avaliações
-*/
+ * Classe responsável pelos dados das avaliações
+ */
 
-require_once("./core/Database.php");
+require_once "../autoload.php";
 
 use Exception;
 
@@ -56,33 +55,33 @@ class SurveyModel extends DepartmentModel {
    * @param string $comment - Comentários adicionais
    * @return int - ID da avaliação inserida
    */
-  public function createResult($idDepartment, $score, $reason, $comment = null) {
+  public function createResult($idDepartment, $score) {
     // Código do método
     $conexao = \App\Model\Database::conectar();
-
-    if(get_class($conexao) == "mysqli"){
-    // Prepara o comando SQL e vincula os parâmetros
-    $createResult = $conexao->prepare("INSERT INTO survey (department_iddepartment, score, reason, comment) VALUES (?, ?, ?, ?)");
-    $createResult->bind_param("iiss", $idDepartment, $score, $reason, $comment);
     
-    try {
-      // Executa o comando SQL e retorna o ID do departamento inserido      
-      $createResult->execute();
-      // Capturar id cadastrado                
-      $result = mysqli_insert_id($conexao); 
-      return ($result);    
-    } catch(\mysqli_sql_exception $e) {
-      {
-        // Verifica se o erro é "Duplicate entry"
-        return $e;
-        if ($e->getCode() == 1062) {
-          // Trata o erro (exibindo uma mensagem de erro para o usuário)    
-          return ($e->getCode());
-        } else {
-          // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
-          return ($e->getCode());
-        }              
-      }
+    if(get_class($conexao) == "mysqli"){
+      // Prepara o comando SQL e vincula os parâmetros
+      $createResult = $conexao->prepare("INSERT INTO survey (department_iddepartment, score) VALUES (?, ?)");
+      $createResult->bind_param("ii", $idDepartment, $score);
+    
+      try {
+        // Executa o comando SQL e retorna o ID do departamento inserido      
+        $createResult->execute();
+        // Capturar id cadastrado                
+        $result = mysqli_insert_id($conexao); 
+        return ($result);    
+      } catch(\mysqli_sql_exception $e) {
+        {
+          // Verifica se o erro é "Duplicate entry"
+          return $e;
+          if ($e->getCode() == 1062) {
+            // Trata o erro (exibindo uma mensagem de erro para o usuário)    
+            return ($e->getCode());
+          } else {
+            // Trata outros erros de banco de dados (exibindo uma mensagem de erro genérica para o usuário)
+            return ($e->getCode());
+          }              
+        }
     }
     }else{     
         //retorna a conexao como erro de conexao 
