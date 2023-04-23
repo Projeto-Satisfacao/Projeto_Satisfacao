@@ -3,7 +3,8 @@
 /**
  * Classe responsável pelos dados do formulário de criação ou edição de uma avaliação e seus detalhes
  */
-require_once("autoload.php");
+
+require_once "autoload.php";
 require_once("error.php");
 
 class SurveyFormView {
@@ -72,32 +73,23 @@ class SurveyFormView {
      * - Verificar se todos os campos estão preenchidos;
      * O método do controller que recebe esses dados é o store($surveyData).
      */
+
     try
     {
       // Verifica se todos os campos obrigatórios foram preenchidos
-      if (empty($surveyData['idDepartment']) || empty($surveyData['score']) || 
-          empty($surveyData['reason']) || empty($surveyData['comment']))
-      {
-        echo '<div class="custom-modal" id="customModal">
-                <div class="custom-modal-content">
-                  <p>Por favor, preencha todos os campos obrigatórios.</p>
-                  <button onclick="hideModal()">Fechar</button>
-                </div>
-              </div>';
-      }
+      if (empty($surveyData)) { 
+        die(json_encode('Não foi possivel salvar o score'));
+        return null;
+      } else {  
+        $surveyModel = new \App\Model\SurveyModel();
+        $surveyModel->createResult($idDepartment, $surveyData);
+      }   
       
-      else 
-      {
-        $surveyModel = ((new \App\Model\SurveyModel())->createResult($surveyData['idDepartment'], $surveyData['score'],
-                                                                     $surveyData['reason'], $surveyData['comment']));
-      }
-    }
-    
-    catch (Exception $e)
-    {
+    } catch (Exception $e) { 
         // Exibir mensagem de erro para o usuário
         echo '[ATENÇÃO] ' . $e->getMessage();
     }
+  
   }
   
 }
