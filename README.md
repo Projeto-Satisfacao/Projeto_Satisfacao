@@ -115,4 +115,4 @@ Técnico em Análise e Desenvolvimento de Sistemas
 
 <h2 style="center" id="licenca">📝 Licença</h2>
 
-Este projeto esta sobe a licença GNU.
+Este projeto esta sob a licença GNU.
