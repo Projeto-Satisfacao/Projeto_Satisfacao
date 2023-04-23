@@ -24,6 +24,55 @@
     .container-fluid {
       margin-left: 23px;
     }
+
+    .fa-trash-can {
+			
+			color: red;
+			font-size: 27px;
+		}
+
+		.fa-pen-to-square {
+			
+			color: blue;
+			font-size: 27px;
+		}
+
+		.options {
+			display: flex;
+			justify-content: space-between;
+			
+		}
+
+		.options a {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.shake-icon:hover {
+			display: block;
+			animation: shake 0.7s;
+		}
+
+		@keyframes shake {
+			0% {
+				transform: translateX(0);
+				transform: translateY(0);
+			}
+			25% {
+				transform: translateY(-2px);
+			}
+			50% {
+				transform: translateY(2px);
+			}
+			75% {
+				transform: translateY(-2px);
+			}
+			100% {
+				transform: translateX(0);
+				transform: translateY(0);
+			}
+		}
+
   </style>
 </head>
 
@@ -36,81 +85,86 @@
     <!-- TODO O CONTEÚDO ESTÁ AQUI DENTRO DE SECTION content -->
     
     <!-- AVALIACOES -->
-	<section class="content">
-		
-    <h2>SURVEY</h2>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Pesquisa de satisfação SENAI</h3>
-                </div>
-              <div class="card">
-                <!-- / FIM DO TÍTULO \ -->
+	<section class="content">	
+		<h2>SURVEY</h2>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Pesquisa de satisfação SENAI</h3>
+							</div>
+						<div class="card">
+							<!-- / FIM DO TÍTULO \ -->
 
-                <!-- CORPO DA TABELA -->
-                <div class="card-body">
-                  <table id="avaiacoes" class="table table-bordered table-striped">
+							<!-- CORPO DA TABELA -->
+							<div class="card-body">
+								<table id="avaiacoes" class="table table-bordered table-striped">
 
-                    <!-- TÍTULOS DAS COLUNAS -->
-                    <thead>
-                        <tr>
-                            <th>Nota</th>
-                            <th>Setor</th>
-                            <th>Local</th>
-                            <th>Motivo</th>
-							<th>Criado em</th>
-							<th>Atualizado em</th>
-                        </tr>
-                    </thead>
+									<!-- TÍTULOS DAS COLUNAS -->
+									<thead>
+										<tr>
+											<th>Nota</th>
+											<th>Setor</th>
+											<th>Local</th>
+											<th>Criado em</th>
+											<th>Atualizado em</th>
+											<th>Opções</th>
+										</tr>
+									</thead>
 
-                    <!-- CONTEÚDO DA TABELA
-                      aqui os valores vão ser inseridos diretamente do banco de dados
-                    -->
-                    <tbody>
-                        <tr>
-                            <td>5</td>  <!-- Nota/Avaliação vindo -->
-                            <td>NOC</td> <!-- Setor avaliado -->
-                            <td>Senai Camaçari</td> <!-- Local do setor -->
-                            <td>Gostei do atendimento</td> <!-- Feedback. Caso tenha aparece aqui, caso não tenha aparece isso como padrão -->
-							<td>11/04/2023 às 19:31</td> <!-- Data e hora que a avaliação foi feita -->
-							<td>11/04/2023 às 19:31</td> <!-- Data e hora que a avaliação foi atualizada -->
-						</tr>
-						<tr>
-                            <td>3</td>  
-                            <td>NOC</td>
-                            <td>Cidade do saber</td>
-                            <td>Demorou demais</td> 
-							<td>21/04/2020 às 23:31</td> 
-							<td>11/04/2023 às 19:31</td> 
-						</tr>
-                    </tbody>
+									<!-- CONTEÚDO DA TABELA
+										aqui os valores vão ser inseridos diretamente do banco de dados
+									-->
+									<tbody>
+										<tr>
+											<td>5</td>  <!-- Nota/Avaliação vindo -->
+											<td>NOC</td> <!-- Setor avaliado -->
+											<td>Senai Camaçari</td> <!-- Local do setor -->
+											<td>11/04/2023 às 19:31</td> <!-- Data e hora que a avaliação foi feita -->
+											<td>11/04/2023 às 19:31</td> <!-- Data e hora que a avaliação foi atualizada -->
+											<td class="options"> <!-- Opções de editar e deletar -->
+												<a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
+												<a href="#" class="shake-icon"><i class="fa-solid fa-trash-can"></i></a>
+											</td>
+										</tr>
+										<tr>
+											<td>3</td>  
+											<td>NOC</td>
+											<td>Cidade do saber</td>
+											<td>21/04/2020 às 23:31</td> 
+											<td>11/04/2023 às 19:31</td>
+											<td class="options">
+												<a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
+												<a href="#" class="shake-icon"><i class="fa-solid fa-trash-can"></i></a>
+											</td> 
+										</tr>
+									</tbody>
 
-                    <!-- FOOTER DA TABELA -->
-                    <tfoot>
-                        <tr>
-                            <th>Nota</th>
-                            <th>Setor</th>
-                            <th>Local</th>
-                            <th>Motivo</th>
-							<th>Criado em</th>
-							<th>Atualizado em</th>
-                        </tr>
-                    </tfoot>
-                  </table>
-                </div>
-                <!-- /FIM DO CORPO DA TABELA -->
-              </div>
-              <!-- /FIM DO CARD -->
-            </div>
-            <!-- /FIM DO COL -->
-          </div>
-          <!-- /FIM DO ROW -->
-        </div>
-        <!-- /FIM DO CONTAINER FLUID -->
-    </section>
-    <!-- /FIM DE TUDO DA TABELA-->
+									<!-- FOOTER DA TABELA -->
+									<tfoot>
+										<tr>
+											<th>Nota</th>
+											<th>Setor</th>
+											<th>Local</th>
+											<th>Criado em</th>
+											<th>Atualizado em</th>
+											<th>Opções</th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+							<!-- /FIM DO CORPO DA TABELA -->
+						</div>
+						<!-- /FIM DO CARD -->
+					</div>
+					<!-- /FIM DO COL -->
+				</div>
+				<!-- /FIM DO ROW -->
+			</div>
+			<!-- /FIM DO CONTAINER FLUID -->
+	</section>
+	<!-- /FIM DE TUDO DA TABELA-->
 
 	<!-- SETOR -->
 
@@ -118,69 +172,79 @@
 	<!-- USUÁRIO -->
 	<section class="content">
 		<h2>USUÁRIOS</h2>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Pesquisa de satisfação SENAI</h3>
-                </div>
-              <div class="card">
-                <!-- / FIM DO TÍTULO \ -->
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h3 class="card-title">Pesquisa de satisfação SENAI</h3>
+								</div>
+							<div class="card">
+								<!-- / FIM DO TÍTULO \ -->
 
-                <!-- CORPO DA TABELA -->
-                <div class="card-body">
-                  <table id="usuario" class="table table-bordered table-striped">
+								<!-- CORPO DA TABELA -->
+								<div class="card-body">
+									<table id="usuario" class="table table-bordered table-striped">
 
-                    <!-- TÍTULOS DAS COLUNAS -->
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Senha</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
+										<!-- TÍTULOS DAS COLUNAS -->
+										<thead>
+											<tr>
+												<th>Username</th>
+												<th>Email</th>
+												<th>Senha</th>
+												<th>Status</th>
+												<th>Opções</th>
+											</tr>
+										</thead>
 
-                    <!-- CONTEÚDO DA TABELA
-                      aqui os valores vão ser inseridos diretamente do banco de dados
-                    -->
-                    <tbody>
-                        <tr>
-                            <td>LeonardoL</td>  <!-- Username do usuário -->
-                            <td>leonardolucena@gmail.com</td> <!-- Email do usuário -->
-                            <td>a7s8dhf8askans25827n</td> <!-- Senha do usuário (MD5) -->
-                            <td>2</td> <!-- Status do usuário (tinyInt) -->
-                        </tr>
-						<tr>
-							<td>SusanaC</td>
-							<td>susanacalmon@gmail.com</td>
-							<td>df08s08f0gsdfg098p3</td>
-							<td>1</td>
-						</tr>
-                    </tbody>
+										<!-- CONTEÚDO DA TABELA
+											aqui os valores vão ser inseridos diretamente do banco de dados
+										-->
+										<tbody>
+											<tr>
+												<td>LeonardoL</td>  <!-- Username do usuário -->
+												<td>leonardolucena@gmail.com</td> <!-- Email do usuário -->
+												<td>a7s8dhf8askans25827n</td> <!-- Senha do usuário (MD5) -->
+												<td>2</td> <!-- Status do usuário (tinyInt) -->
+												<td class="options"> <!-- Opções de editar e deletar -->
+													<a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
+													<a href="#" class="shake-icon"><i class="fa-solid fa-trash-can"></i></a>
+												</td>
+											</tr>
+											<tr>
+												<td>SusanaC</td>
+												<td>susanacalmon@gmail.com</td>
+												<td>df08s08f0gsdfg098p3</td>
+												<td>1</td>
+												<td class="options">
+													<a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
+													<a href="#" class="shake-icon"><i class="fa-solid fa-trash-can"></i></a>
+												</td>
+											</tr>
+										</tbody>
 
-                    <!-- FOOTER DA TABELA -->
-                    <tfoot>
-                        <tr>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Senha</th>
-                            <th>Status</th>
-                        </tr>
-                    </tfoot>
-                  </table>
-                </div>
-                <!-- /FIM DO CORPO DA TABELA -->
-              </div>
-              <!-- /FIM DO CARD -->
-            </div>
-            <!-- /FIM DO COL -->
-          </div>
-          <!-- /FIM DO ROW -->
-        </div>
-        <!-- /FIM DO CONTAINER FLUID -->
-    </section>
+										<!-- FOOTER DA TABELA -->
+										<tfoot>
+											<tr>
+												<th>Username</th>
+												<th>Email</th>
+												<th>Senha</th>
+												<th>Status</th>
+												<th>Opções</th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+								<!-- /FIM DO CORPO DA TABELA -->
+							</div>
+							<!-- /FIM DO CARD -->
+						</div>
+						<!-- /FIM DO COL -->
+					</div>
+					<!-- /FIM DO ROW -->
+				</div>
+				<!-- /FIM DO CONTAINER FLUID -->
+		</section>
 
 	<!-- INICIO DO JS -->
 

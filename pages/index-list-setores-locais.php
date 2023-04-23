@@ -24,6 +24,55 @@
     .container-fluid {
       margin-left: 23px;
     }
+
+	.fa-trash-can {
+			
+			color: red;
+			font-size: 27px;
+		}
+
+		.fa-pen-to-square {
+			
+			color: blue;
+			font-size: 27px;
+		}
+
+		.options {
+			display: flex;
+			justify-content: space-between;
+			
+		}
+
+		.options a {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.shake-icon:hover {
+			display: block;
+			animation: shake 0.7s;
+		}
+
+		@keyframes shake {
+			0% {
+				transform: translateX(0);
+				transform: translateY(0);
+			}
+			25% {
+				transform: translateY(-2px);
+			}
+			50% {
+				transform: translateY(2px);
+			}
+			75% {
+				transform: translateY(-2px);
+			}
+			100% {
+				transform: translateX(0);
+				transform: translateY(0);
+			}
+		}
+
   </style>
 </head>
 
@@ -60,6 +109,7 @@
                             <th>Descrição</th>
                             <th>Local</th>
                             <th>Criado em</th>
+                            <th>Opções</th>
                         </tr>
                     </thead>
 
@@ -72,12 +122,20 @@
                             <td>Nucleo de Orientação Cultural</td> <!-- Descrição do departamento -->
                             <td>Lugar</td> <!-- Local do setor -->
                             <td>11/04/2023 às 19:31</td> <!-- Data e hora que o departamento foi adicionado -->
-                        </tr>
+							<td class="options"> <!-- Opções de editar e deletar -->
+								<a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
+								<a href="#" class="shake-icon"><i class="fa-solid fa-trash-can"></i></a>
+							</td>
+						</tr>
 						<tr>
                             <td>IFBA</td>  
                             <td>Instituto Federal de Educação, Ciência e Tecnologia da Bahia</td>
                             <td>Lugar2</td>
-                            <td>11/04/2023 às 19:29</td> 
+                            <td>11/04/2023 às 19:29</td>
+							<td class="options">
+								<a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
+								<a href="#" class="shake-icon"><i class="fa-solid fa-trash-can"></i></a>
+							</td>
 						</tr>
                     </tbody>
 
@@ -88,6 +146,7 @@
                             <th>Descrição</th>
                             <th>Local</th>
                             <th>Criado em</th>
+                            <th>Opções</th>
                         </tr>
                     </tfoot>
                   </table>
@@ -126,6 +185,7 @@
                             <th>Nome</th>
                             <th>Enderenço</th>
                             <th>Site</th>
+							<th>Opções</th>
                         </tr>
                     </thead>
 
@@ -137,11 +197,19 @@
                             <td>Cidade do saber</td>  <!-- Nome do local -->
                             <td>Rua do Telegrafo, S/Nº, bairro do Natal, Camaçari</td> <!-- Endereço do local -->
                             <td>https://secult.camacari.ba.gov.br/?page_id=532%27</td> <!-- URL do possível site do local -->
+							<td class="options"> <!-- Opções de editar e deletar -->
+								<a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
+								<a href="#" class="shake-icon"><i class="fa-solid fa-trash-can"></i></a>
+							</td> 
                         </tr>
 						<tr>
                             <td>Google</td>  
                             <td>Vira a dereita, vai reto na casa Nº2, esquerda e vai toda vida reto</td>
                             <td>https://google.com.br</td>
+							<td class="options">
+								<a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
+								<a href="#" class="shake-icon"><i class="fa-solid fa-trash-can"></i></a>
+							</td> 
 						</tr>
                     </tbody>
 
@@ -151,6 +219,7 @@
                             <th>Nome</th>
                             <th>Enderenço</th>
                             <th>Site</th>
+							<th>Opções</th>
                         </tr>
                     </tfoot>
                   </table>
