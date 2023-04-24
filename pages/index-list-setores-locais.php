@@ -131,7 +131,6 @@
                     <tr>
                       <th>Nome</th>
                       <th>Descrição</th>
-                      <th>Criado em</th>
                       <th>Opções</th>
                     </tr>
                   </thead>
@@ -146,16 +145,6 @@
                     <tr>
                       <td><?= $row['department'] ?></td> <!-- Nome do departamento -->
                       <td><?= $row['description'] ?></td> <!-- Descrição do departamento -->
-                      <td>
-                        <?php 
-                                $str = $row['data_criacao'];
-                                $data = explode(" ", $str)[0];
-                                $reverseData = array_reverse(explode('-', $data));
-                                $implodeData = implode('-', $reverseData);
-
-                                echo $implodeData;         
-                        ?>
-                      </td> <!-- Data e hora que o departamento foi adicionado -->
                       <td class="options">
                         <!-- Opções de editar e deletar -->
                         <a href="#" class="shake-icon"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -177,7 +166,6 @@
                     <tr>
                       <th>Nome</th>
                       <th>Descrição</th>
-                      <th>Criado em</th>
                       <th>Opções</th>
                     </tr>
                   </tfoot>
