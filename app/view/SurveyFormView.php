@@ -86,6 +86,8 @@
         } else {  
           $surveyModel = new \App\Model\SurveyModel();
           $surveyModel->createResult($idDepartment, $surveyData); 
+          die(json_encode('Não foi possivel salvar o score'));
+
         }   
         
       } catch (Exception $e) { 

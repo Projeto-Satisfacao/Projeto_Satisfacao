@@ -6,7 +6,12 @@ namespace App\Model;
 * Classe responsável pelos dados dos locais
 */
 
-require_once("../core/Database.php");
+try {
+  require_once("../core/Database.php");
+} catch (\Throwable $th) {
+  require_once("core/Database.php");
+}
+
 
 use Exception;
 use mysqli_sql_exception;
