@@ -28,14 +28,14 @@
       <h1 class="bemvindo"> bem-vindo(a) </h1>
       <p> Faça o login com o seu usuário e senha
         para acessar a página.</p>
-      <form class="form" action="app/view/LoginFormView.php" method="POST">
+      <form class="form" action="../action_page.php" method="POST">
         <div class="mb-3">
           <label for="exampleInputUsuario1" class="form-label">Usuário</label>
-          <input type="text" class="form-control" id="exampleInputUsuario1" aria-describedby="usuarioHelp" name="email" required>
+          <input type="email" class="form-control" id="loginUser" aria-describedby="usuarioHelp" name="loginUser" required>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+          <input type="password" class="form-control" id="password" name="password" required>
           <div id="passwordHelp" class="form-text">Nunca compartilhe sua senha com ninguém.</div>
         </div>
         <div class="mb-3 form-check">

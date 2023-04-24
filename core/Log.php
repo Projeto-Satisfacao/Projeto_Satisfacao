@@ -19,7 +19,7 @@ class Logger {
     $ip = $_SERVER['REMOTE_ADDR'];
     $horaAtual = date("H:i:s");
     $dataAtual = date("d-m-Y");
-    $log = fopen("../../docs/logs/user/logs.txt", "a+", 0);
+    $log = fopen("docs/logs/user/logs.txt", "a+", 0);
     // Passar a mensagem como parametro
     // $mensagem = "Acessou o sistema";
     $texto = "[IP]: $ip \n[USUÁRIO]: {$_SESSION['usuario']} \n[DATA]: $dataAtual \n[HORA]: $horaAtual \n[AÇÃO]: $message\n\n";
@@ -38,7 +38,7 @@ class Logger {
     $ip = $_SERVER['REMOTE_ADDR'];
     $horaAtual = date("H:i:s");
     $dataAtual = date("d-m-Y");
-    $log = fopen("../../docs/logs/local/logs.txt", "a+", 0);
+    $log = fopen("docs/logs/local/logs.txt", "a+", 0);
     // Passar a mensagem como parametro
     // $mensagem = "Acessou o sistema";
     $texto = "[IP]: $ip \n[USUÁRIO]: {$_SESSION['username']} \n[DATA]: $dataAtual \n[HORA]: $horaAtual \n[AÇÃO]: $message\n\n";

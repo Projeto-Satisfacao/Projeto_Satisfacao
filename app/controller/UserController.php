@@ -6,7 +6,7 @@ namespace App\Controller;
  * Classe responsável pelo controle dos usuários
  */
 
-//require_once("../../core/Log.php");
+require_once("core/Log.php");
 
 use Exception;
 
@@ -23,7 +23,7 @@ class UserController {
   */
   public function getLoginFormData($email, $password) {
     // Código do método
-    if ((new \App\Controller\UserController())->login($email, $password)) {
+    if ((new \App\Controller\UserController())->login($email, $password) === true) {
       // Usuário autenticado com sucesso
 
       // Registra a LOG de entrada
@@ -31,9 +31,9 @@ class UserController {
       \App\Core\Logger::logUser($message);
 
       // Redirecionar para a página inicial
-      header('Location: ../../index.php');
-      exit;
-    }
+      header("Location: pages/index-cadastros.php");
+      exit; 
+    } 
   }
 
   /**
@@ -63,6 +63,7 @@ class UserController {
       // Verifica se o usuário existe
       if (!$userData) {
         throw new Exception('Usuário não encontrado.');
+        return false;
       } 
     } catch (Exception $e) {
         // Exibir mensagem de erro para o usuário
