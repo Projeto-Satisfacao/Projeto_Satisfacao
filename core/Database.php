@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Model;
 
+
 /**
-* Classe responsável por fazer a conexão com o banco de dados
-*/
+ * Classe responsável por fazer a conexão com o banco de dados
+ */
+
 
 use Exception;
 

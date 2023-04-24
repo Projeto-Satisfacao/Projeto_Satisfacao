@@ -1,10 +1,14 @@
 <?php
 
+namespace App\View;
+
 /**
  * Classe responsável pelos dados do formulário de criação ou edição de um usuário e seus detalhes
  */
 require_once("autoload.php");
 require_once("error.php");
+
+use Exception;
 
 class UserFormView {
 
