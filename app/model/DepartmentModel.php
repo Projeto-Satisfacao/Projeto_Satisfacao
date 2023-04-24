@@ -6,7 +6,8 @@ namespace App\Model;
 * Classe responsável pelos dados dos setores
 */
 
-require_once("./core/Database.php");
+require_once("../core/Database.php");
+require_once "../autoload.php";
 
 use Exception;
 
