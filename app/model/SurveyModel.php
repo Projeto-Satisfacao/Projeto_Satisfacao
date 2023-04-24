@@ -5,7 +5,7 @@ namespace App\Model;
  * Classe responsável pelos dados das avaliações
  */
 
-require_once "../autoload.php";
+require_once "autoload.php";
 
 use Exception;
 
