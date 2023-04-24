@@ -9,12 +9,21 @@ extract($_POST);
 $form = $_POST;
 
 // verifica quais infomações foram passadas no array "$form" 
+
+if (array_key_exists('loginUser', $form))
+{
+    $comando = new \App\Controller\UserController();
+    $comando->getLoginFormData($_POST['loginUser'], $_POST['password']);
+
+} 
+
+
 if (array_key_exists('username', $form))
 {
     $comando = new \App\View\UserFormView();
     $comando->getUserFormData($_POST);
 
-    //header("Location: index-cadastros.php");
+    header("Location: index-cadastros.php");
 } 
 
 elseif (array_key_exists('local', $form)) 
@@ -22,7 +31,7 @@ elseif (array_key_exists('local', $form))
     $comando = new \App\View\LocalFormView();
     $comando->getLocalFormData($_POST);
     
-    //header("Location: index-cadastros.php");
+    header("Location: index-cadastros.php");
 
 }
 
@@ -31,7 +40,7 @@ elseif (array_key_exists('department', $form))
     $comando = new \App\View\DepartmentFormView();
     $comando->getDepartmentFormData($_POST);
 
-    //header("Location: index-cadastros.php");
+    header("Location: index-cadastros.php");
 
 }
 
