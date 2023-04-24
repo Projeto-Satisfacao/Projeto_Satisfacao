@@ -1,5 +1,4 @@
 const associarDepartamento = () => {
-  console.log('teste');
   const btns = document.querySelectorAll('.btnAssociar');
 
   if (localStorage.getItem('departamento')) {
