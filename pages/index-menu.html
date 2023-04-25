@@ -27,7 +27,7 @@
 		height: 100%;
 	}
 
-	.main-sidebar {
+	.sidebar-container {
 		background-color: #0077c2;
 		color: #fff;
 		position: fixed;
@@ -36,32 +36,33 @@
 		width: 280px;
 		height: 100%;
 		padding: 20px;
+		overflow-y: auto;
 	}
 
-	.main-sidebar,
+	.sidebar-container,
 	label {
 		text-align: center;
 	}
 
-	.main-sidebar ul {
+	.sidebar-container ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 		text-align: left;
 	}
 
-	.main-sidebar li {
+	.sidebar-container li {
 		margin-bottom: 10px;
 	}
 
-	.main-sidebar a {
+	.sidebar-container a {
 		color: #fff;
 		display: block;
 		padding: 10px;
 		text-decoration: none;
 	}
 
-	.main-sidebar a:hover {
+	.sidebar-container a:hover {
 		background-color: #005ca9;
 		font-size: 17px;
 	}
@@ -92,7 +93,7 @@
 
 	/*"RESPONSIVIDADE DA BARRA LATERAL"*/
 	@media screen and (max-width: 1475px) {
-		.main-sidebar {
+		.sidebar-container {
 			width: 170px;
 			font-size: 15px;
 		}
@@ -103,7 +104,7 @@
 	}
 
 	@media screen and (max-width: 1120px) {
-		.main-sidebar {
+		.sidebar-container {
 			width: 130px;
 			font-size: 15px;
 		}
@@ -161,7 +162,7 @@
 
 <script src="https://kit.fontawesome.com/85b090ab76.js" crossorigin="anonymous"></script>
 <!-- Sidebar -->
-<div class="main-sidebar">
+<div class="sidebar-container">
 	<div class="logo">
 		<img class="" src="../assets/img/senai.jpg" alt="Pesquisa de satisfação">
 
