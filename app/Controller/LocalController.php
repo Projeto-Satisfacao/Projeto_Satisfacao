@@ -30,7 +30,7 @@ class LocalController {
   {
     // Código do método
     // Redireciona para a página do formulário de criação de local
-    header("Location: app/view/LocalFormView.php");
+    header("Location: App/View/LocalFormView.php");
     exit;
   }
 
