@@ -1,7 +1,6 @@
 <?php 
 
   require_once "../autoload.php";
-  
   $allDepartments = (new \App\Model\DepartmentModel())->getAll();
 
 ?>
