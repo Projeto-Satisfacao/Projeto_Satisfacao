@@ -83,6 +83,20 @@ class DepartmentController {
     }
   }
 
+  public function selectLocals($idDepartment) 
+  {
+
+    $data = (new \App\Model\LocalModel())->getById($idDepartment);
+
+    try {
+      // Verifica se o setor existe, se o setor não existir, exibe uma mensagem de erro
+      return $data ? die(json_encode($data)) : die(json_encode('Setor não encontrado.'));
+    } catch (Exception $e) {
+        // Exibir mensagem de erro para o usuário
+        die(json_encode('[ATENÇÃO] ERROR DE EXIBIÇÃO ' . $e->getMessage()));
+    }
+  }
+
   /**
   * Cria um formulário para edição de um setor
   * @param int $idDepartment - ID do setor a ser editado
