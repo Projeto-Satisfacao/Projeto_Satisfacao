@@ -41,7 +41,7 @@ if (isset($_GET['aviso'])) {
         setTimeout(function() {
             var popup = document.querySelector('.popup'); /* atribuindo o popup numa variável */
             popup.style.animation = 'fadeout 0.5s linear'; /* coloca a animação no popup */
-            setTimeout(function() { /* remove o popup da dela depois de 5000 milissegundos (5 sec) */
+            setTimeout(function() { /* remove o popup da tela depois de 5000 milissegundos (5 sec) */
                 popup.remove();
             }, 500); /* temp de espera antes de começar a contar o tempo de remover o popup */
         }, 5000); /* tempo de tela do popup */
