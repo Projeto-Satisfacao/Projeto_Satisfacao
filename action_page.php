@@ -22,19 +22,20 @@ if (array_key_exists('username', $form)) {
     $comando = new \App\View\UserFormView();
     $comando->getUserFormData($_POST);
 
-    header("Location: index-cadastros.php");
+    header("Location: ./pages/index-cadastros.php?aviso=Usuário cadastrado com sucesso!");
+
 } elseif (array_key_exists('local', $form)) {
     $comando = new \App\View\LocalFormView();
     $comando->getLocalFormData($_POST);
 
-    header("Location: index-cadastros.php");
+    header("Location: ./pages/index-cadastros.php?aviso=Local cadastrado com sucesso!");
 
 } elseif (array_key_exists('department', $form)) {
     $comando = new \App\Controller\DepartmentController();
 
 
     if ($comando->store($_POST) === true) {
-        header("Location: index-cadastros.php");
+        header("Location: ./pages/index-cadastros.php?aviso=ERROR:FALTA REVISAR A LÓGICA DE CADASTRO DE SETORES! ESSA MENSAGEM NÃO SERÁ EXIBIDA!");
     }
 
 } elseif (array_key_exists('score', $form)) {
