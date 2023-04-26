@@ -1,3 +1,54 @@
+<?php
+
+/* Se existir algo no $_GET['aviso] ele atribui isso numa variável que contem a mensagem que vai ser exibida no popup */
+if (isset($_GET['aviso'])) { 
+    $mensagem = $_GET['aviso'];
+	$cor = '#3CB371'; // a cor pode ser uma variável, ou seja, podemos mudar ela dependendo de um IF ou algo assim
+?>
+    <style>
+        .popup {
+            background-color: <?= $cor ?>; /* Cor do fundo do popup */
+			margin-top: 2vh;
+            color: #fff; /* Cor da fonte do popup */
+            font-family: "Poppins", sans-serif; /* Fonte do popup */
+            font-weight: bold; 
+            padding: 10px; 
+            position: fixed; 
+            top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); /* left 50% e transform deixam o popup centralizado  */
+            animation: fadein 0.5s linear; /* animacao ao aparecer */
+            z-index: 9999; /* garante que o popup fique na frente de TUDO */
+        }
+
+		/* ANIMAÇÕES */
+        @keyframes fadein {
+            from { opacity: 0; } 
+            to { opacity: 1; } 
+        }
+
+        @keyframes fadeout {
+            from { opacity: 1; } 
+            to { opacity: 0; } 
+        }
+    </style>
+
+	<!-- o popup -->
+    <div class="popup"><?php echo $mensagem; ?></div>
+
+    <script>
+		/* Função que faz um cooldown para o popup desaparecer no mesmo estilo em que ele aparece */
+        setTimeout(function() {
+            var popup = document.querySelector('.popup'); /* atribuindo o popup numa variável */
+            popup.style.animation = 'fadeout 0.5s linear'; /* coloca a animação no popup */
+            setTimeout(function() { /* remove o popup da tela depois de 5000 milissegundos (5 sec) */
+                popup.remove();
+            }, 500); /* temp de espera antes de começar a contar o tempo de remover o popup */
+        }, 5000); /* tempo de tela do popup */
+    </script>
+<?php
+} // isso daqui é do IF lá de cima
+?>
 <!DOCTYPE html>
 <html lang="Pt-Br">
 
