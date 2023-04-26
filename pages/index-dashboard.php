@@ -10,6 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/ico" href="../assets/img/ico.ico"/>
   <title>Pesquisa Satisfação Dashboard</title>
 
   <!-- Google Font: Poppins (elementos h1,h2,h3) -->
