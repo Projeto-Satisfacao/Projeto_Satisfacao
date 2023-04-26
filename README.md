@@ -23,7 +23,7 @@
  <a href="#licenca">Licença</a> 
 </p>
 
-<h2 style="center" id="sobre">Sobre</h2>
+<h2 style="center" id="sobre">👤 Sobre</h2>
 
 A proposta do projeto é a criação de um aplicativo de avaliação para a prefeitura de Camaçari-Ba, com o objetivo de promover transparência e participação cidadã na gestão pública. O aplicativo permitirá que os cidadãos avaliem os serviços oferecidos pela prefeitura e seus órgãos, bem como os locais públicos pertencentes ao município. O objetivo é fornecer um canal direto de comunicação entre os cidadãos e a prefeitura, permitindo que os gestores tenham um feedback mais direto e preciso sobre a qualidade dos serviços oferecidos e possam tomar ações para melhorar a experiência do usuário.
 
@@ -40,7 +40,7 @@ Back-End
 Banco de Dados:
 - MySql
 
-<h2 style="center" id="instruções">Instruções</h2>
+<h2 style="center" id="instruções">📖 Instruções</h2>
 
 Para usar o sistema, basta seguir os seguintes passos:
 
@@ -56,11 +56,11 @@ Os usuários não têm acesso à lista de locais ou outras informações do sist
 
 Os administradores do sistema podem gerenciar as informações do sistema, como locais e serviços disponíveis para avaliação, através da interface de gerenciamento disponível para a prefeitura. Eles também podem visualizar as avaliações recebidas e gerar relatórios de desempenho.
 
-<h2 style="center" id="requisitos_sistema">Requisitos do Sistema</h2>
+<h2 style="center" id="requisitos_sistema">💻 Requisitos do Sistema</h2>
 
 Os requisitos de um sistema são as especificações e funcionalidades que o sistema deve ter para atender às necessidades dos usuários. Eles incluem, principalmente, requisitos funcionais e requisitos não-funcionais. Existem vários outros tipos de requisitos, o uso deles vai depender do projeto sendo trabalhado.
 
-<h2 style="center" id="requisitos_funcionais">Requisitos Funcionais</h2>
+<h2 style="center" id="requisitos_funcionais">🛠️ Requisitos Funcionais</h2>
 
 Requisitos funcionais são funcionalidades que um sistema precisa ter para atender às necessidades do usuário. Eles descrevem o que o sistema deve fazer e como fazer. Eles estão relacionados às tarefas do usuário e incluem telas, campos e botões. Esses requisitos são fundamentais para garantir que o sistema seja útil e atenda aos objetivos do usuário.
 
@@ -79,7 +79,7 @@ Requisitos funcionais são funcionalidades que um sistema precisa ter para atend
 - Uso das PSRs e normas do PHP The Right Way;
 - Padrões nas telas para uma experiência de usuário consistente.
 
-<h2 style="center" id="requisitos_not">Requisitos Não Funcionais</h2>
+<h2 style="center" id="requisitos_not">🎨 Requisitos Não Funcionais</h2>
 
 Os requisitos não-funcionais são características que um sistema deve possuir, mas que não estão diretamente relacionadas com as funcionalidades que ele oferece. Eles estão relacionados com aspectos como desempenho, segurança, usabilidade, manutenibilidade, etc. Esses requisitos são importantes para garantir que o sistema seja eficiente, seguro e fácil de usar, além de permitir que ele seja mantido e evoluído com facilidade ao longo do tempo.
 
@@ -97,7 +97,7 @@ Os requisitos não-funcionais são características que um sistema deve possuir,
 - Monitoramento contínuo do sistema para identificar problemas e anomalias, com sistema de alertas para equipe de suporte.
 - Sistema altamente confiável, com tempo de inatividade planejado e comunicado com antecedência.
 
-<h2 style="center" id="pre_requisitos">Pré Requisitos</h2>
+<h2 style="center" id="pre_requisitos">🔍 Pré Requisitos</h2>
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: Git, Node.js e um servidor local. Além disto é bom ter um editor para trabalhar com o código como VSCode
 
 ```
@@ -108,7 +108,7 @@ $ git clone https://github.com/Projeto-Satisfacao/Projeto_Satisfacao.git
 $ cd Projeto_Satisfacao
 ```
 
-<h2 style="center" id="autoria">Autoria</h2>
+<h2 style="center" id="autoria">✍️ Autoria</h2>
 
 Turma G82893 Senai Camaçari - Ba
 Técnico em Análise e Desenvolvimento de Sistemas
