@@ -4,6 +4,7 @@ header("Acess-Control-Allow-Origin: *");
 
 // requires
 require_once "autoload.php";
+error_reporting(0);
 
 // criando array "$form"
 extract($_POST);
