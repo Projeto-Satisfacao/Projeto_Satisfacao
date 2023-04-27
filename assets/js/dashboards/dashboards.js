@@ -1,16 +1,21 @@
-const dashboard1 = () => {
+export const dashboard1 = (props) => {
   const ctx3 = document.getElementById('myChart3');
-  /*
-   * Gráfico de barra stacked que mostra os resultados por mês;
-   * Filtro funciona por ano ao invés de ser por data como nos demais gráficos;
-   *
-   * [EXPLICAÇÃO DAS PARTES IMPORTANTES DO GRÁFICO]
-   *
-   * labels: representa, nesse gráfico, os meses do ano
-   * label: representa a categoria da avaliação
-   * data: representa os dados daquela categoria (são 12 valores, um para cada mês)
-   * backgroundColor: representa a cor das barras do gráfico
-   */
+
+  if (props) {
+    const { meses, mes } = props;
+    const scoreFive = mes.reduce((acc, val, i) => {
+      if (val[meses[i]]['scores']) {
+        console.log(val[meses[i]]);
+        if (val[meses[i]]['scores']['5']);
+      }
+      return acc;
+    }, {});
+    console.log(scoreFive);
+  }
+
+  if (Chart.getChart('myChart3')) {
+    Chart.getChart('myChart3').destroy();
+  }
 
   new Chart(ctx3, {
     type: 'bar',
@@ -80,8 +85,9 @@ const dashboard1 = () => {
   });
 };
 
-const dashboard2 = () => {
+export const dashboard2 = (arr = [0, 1]) => {
   const ctx2 = document.getElementById('myChart2');
+
   /*
    * Gráfico de pizza resumido com apenas avaliações Exelentes e Péssimas;
    * Filtro de data funciona por dia. poderá ser escolhido o dia que se quer ver os resultados (isso pode mudar caso seja mais pertinente);
@@ -93,6 +99,11 @@ const dashboard2 = () => {
    * data: representa os dados daquela categoria (2 valores seguindo a quantidade de strings em LABELS).
    * backgroundColor: representa a cor das fatias do gráfico.
    */
+
+  if (Chart.getChart('myChart2')) {
+    Chart.getChart('myChart2').destroy();
+  }
+
   new Chart(ctx2, {
     type: 'pie',
     data: {
@@ -100,7 +111,7 @@ const dashboard2 = () => {
       datasets: [
         {
           label: 'Quantidade de votos',
-          data: [12, 4],
+          data: arr,
           backgroundColor: ['rgba(16, 168, 55, 0.8)', 'rgba(183, 0, 0, 0.8)'],
         },
       ],
@@ -120,8 +131,9 @@ const dashboard2 = () => {
   });
 };
 
-const dashboard3 = () => {
+export const dashboard3 = (arr = [1, 0, 0, 0, 0]) => {
   const ctx = document.getElementById('myChart');
+  let chart1 = null;
   /*
    * Gráfico donut completo com todas as categorias de avaliação;
    * Filtro de data deve ter os dias do banco de dados (isso pode ser alterado caso seja mais pertinente);
@@ -134,14 +146,19 @@ const dashboard3 = () => {
    * backgroundColor: representa a cor das fatias do gráfico.
    *
    */
-  new Chart(ctx, {
+
+  if (Chart.getChart('myChart')) {
+    Chart.getChart('myChart').destroy();
+  }
+
+  chart1 = new Chart(ctx, {
     type: 'doughnut',
     data: {
       labels: ['Excelente', 'Bom', 'Regular', 'Ruim', 'Péssimo'],
       datasets: [
         {
           label: 'Quantidade de votos',
-          data: [1, 0, 0, 0, 0],
+          data: arr,
           borderWidth: 1,
           backgroundColor: [
             'rgba(16, 168, 55, 0.8)',
@@ -166,6 +183,7 @@ const dashboard3 = () => {
       scales: {},
     },
   });
+  return chart1;
 };
 
 dashboard1();

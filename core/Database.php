@@ -36,4 +36,3 @@ class Database {
     return self::$conexao;
   }
 }
-
