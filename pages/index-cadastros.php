@@ -60,6 +60,7 @@ if (isset($_GET['aviso'])) {
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
 	<link rel="stylesheet" href="../assets/css/modalcss/style.css" />
 	<link rel="stylesheet" href="../assets/css/modalcss/modal.css">
+	<link rel="icon" type="image/ico" href="../assets/img/ico.ico"/>
 	<title>Cadastros</title>
 	<style>
 		/**
